@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim & Ekibe Katıl | Eternal-Morph</title>
+    <meta name="description" content="Eternal-Morph: Ekibimize katılım başvuruları, proje fikri önerileri ve sponsorluk iletişim portalı.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icon Set -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="em-dark-theme">
+
+    <div class="em-bg-glow"></div>
+    <div class="em-bg-grid"></div>
+
+    <!-- Header -->
+    <header class="em-header" id="header">
+        <div class="em-container em-header-container">
+            <a href="/" class="em-brand">
+                <img src="../assets/logo.png" alt="Eternal-Morph Logo" class="em-brand-logo">
+                <div class="em-brand-text">
+                    <span class="em-brand-main">ETERNAL-MORPH</span>
+                    <span class="em-brand-sub"><i class="fa-solid fa-gears"></i> MÜHENDİSLİK PROJE EKİBİ</span>
+                </div>
+            </a>
+
+            <div class="em-status-badge">
+                <span class="em-pulse-dot"></span>
+                <span>1. AŞAMA: SİMÜLASYON & AR-GE EVRESİ</span>
+            </div>
+
+            <nav class="em-nav" id="nav-menu">
+                <ul class="em-nav-list">
+                    <li><a href="/" class="em-nav-link"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
+                    <li><a href="/information/" class="em-nav-link"><i class="fa-solid fa-circle-info"></i> Bilgi & Vizyon</a></li>
+                    <li><a href="/projects/" class="em-nav-link"><i class="fa-solid fa-diagram-project"></i> Projelerimiz</a></li>
+                    <li><a href="/contact/" class="em-nav-link active"><i class="fa-solid fa-paper-plane"></i> İletişim / Katıl</a></li>
+                </ul>
+            </nav>
+
+            <div class="em-header-actions">
+                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm">
+                    <i class="fa-brands fa-github"></i> GitHub Reposu
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Inner Page Hero -->
+    <section class="em-hero" style="padding-top:140px; padding-bottom:40px;">
+        <div class="em-container">
+            <div class="em-hero-tag">
+                <i class="fa-solid fa-envelope-open-text"></i> CONTACT & RECRUITMENT PORTAL
+            </div>
+            <h1 class="em-hero-title">
+                İletişime Geçin & <span class="em-gradient-text">Ekibimize Katılın</span>
+            </h1>
+            <p class="em-hero-subtitle">
+                Makine, Elektrik-Elektronik veya Yazılım Mühendisliği öğrencisiyseniz takıma başvurabilir; akademisyen veya sanayi ortağı olarak projelerimize destek verebilirsiniz. Mesajlarınız doğrudan <strong>eternalmorph26@gmail.com</strong> adresimize ulaşır.
+            </p>
+        </div>
+    </section>
+
+    <!-- İletişim Formu Sayfası -->
+    <section class="em-section em-section-alt">
+        <div class="em-container" style="max-width:700px;">
+            <div class="em-card-glass" style="text-align:left; padding:40px;">
+                <h2 style="font-size:1.8rem; color:var(--em-cyan-bright); margin-bottom:10px;"><i class="fa-solid fa-paper-plane"></i> Mesaj Gönderin</h2>
+                <p style="color:var(--em-text-muted); margin-bottom:25px;">Formu doldurduğunuzda bilgileriniz anında ekibimizin ortak e-posta kutusuna iletilmektedir.</p>
+                
+                <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                    <input type="hidden" name="to_email" value="eternalmorph26@gmail.com">
+
+                    <div class="em-form-group">
+                        <label for="c-name">Adınız Soyadınız / Kurum</label>
+                        <input type="text" name="name" id="c-name" class="em-form-input" placeholder="Örn: Ahmet Yılmaz" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-department">Bölümünüz / Mesleğiniz</label>
+                        <input type="text" name="department" id="c-department" class="em-form-input" placeholder="Örn: Makine Mühendisliği (3. Sınıf)" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-email">E-posta Adresiniz</label>
+                        <input type="email" name="email" id="c-email" class="em-form-input" placeholder="ahmet@ornek.com" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-subject">Konu</label>
+                        <input type="text" name="subject" id="c-subject" class="em-form-input" value="Öğrenci Başvurusu / İş Birliği" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-message">Mesajınız</label>
+                        <textarea name="message" id="c-message" class="em-form-input" rows="5" placeholder="Mesajınızı veya başvuru detayınızı buraya yazın..." required></textarea>
+                    </div>
+                    <button type="submit" class="em-btn em-btn-primary em-btn-block">
+                        <i class="fa-solid fa-paper-plane"></i> Gönder (eternalmorph26@gmail.com)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="em-footer">
+        <div class="em-container em-footer-content">
+            <div class="em-footer-brand">
+                <img src="../assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
+                <div>
+                    <h4>ETERNAL-MORPH</h4>
+                    <p>Multidisipliner Mühendislik Proje Ekibi</p>
+                </div>
+            </div>
+            <div class="em-footer-links">
+                <a href="/">Ana Sayfa</a>
+                <a href="/information/">Bilgi & Vizyon</a>
+                <a href="/projects/">Projelerimiz</a>
+                <a href="/contact/">İletişim</a>
+                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub Reposu</a>
+            </div>
+            <div class="em-footer-copy">
+                <p>&copy; 2026 Eternal-Morph Multidisipliner Mühendislik Proje Ekibi. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal-Morph | Multidisipliner Mühendislik Proje Ekibi</title>
+    <meta name="description" content="Eternal-Morph: Makine, Elektrik-Elektronik ve Yazılım Mühendisliği disiplinlerini birleştirerek Digital Twin, simülasyon ve ileri teknoloji projeleri geliştiren multidisipliner mühendislik proje ekibi.">
+    
+    <!-- Google Fonts: Orbitron & Rajdhani (Fütüristik Başlıklar) ve Inter (Gövde Metinleri) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icon Set -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js 3D WebGL Library & OrbitControls -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="em-dark-theme">
+
+    <!-- Arka Plan Siber Grid ve Işık Efekti -->
+    <div class="em-bg-glow"></div>
+    <div class="em-bg-grid"></div>
+
+    <!-- Üst Navigasyon (Header) -->
+    <header class="em-header" id="header">
+        <div class="em-container em-header-container">
+            <a href="/" class="em-brand">
+                <img src="assets/logo.png" alt="Eternal-Morph Logo" class="em-brand-logo">
+                <div class="em-brand-text">
+                    <span class="em-brand-main">ETERNAL-MORPH</span>
+                    <span class="em-brand-sub"><i class="fa-solid fa-gears"></i> MÜHENDİSLİK PROJE EKİBİ</span>
+                </div>
+            </a>
+
+            <!-- Canlı Simülasyon Durum Göstergesi -->
+            <div class="em-status-badge">
+                <span class="em-pulse-dot"></span>
+                <span>1. AŞAMA: SİMÜLASYON & AR-GE EVRESİ</span>
+            </div>
+
+            <!-- Navigasyon Linkleri -->
+            <nav class="em-nav" id="nav-menu">
+                <ul class="em-nav-list">
+                    <li><a href="/" data-nav="hero" class="em-nav-link active"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
+                    <li><a href="/information/" data-nav="vizyon" class="em-nav-link"><i class="fa-solid fa-circle-info"></i> Bilgi & Vizyon</a></li>
+                    <li><a href="/projects/" data-nav="projeler" class="em-nav-link"><i class="fa-solid fa-diagram-project"></i> Projelerimiz</a></li>
+                    <li><a href="/contact/" data-nav="katil" class="em-nav-link"><i class="fa-solid fa-paper-plane"></i> İletişim / Katıl</a></li>
+                </ul>
+            </nav>
+
+            <div class="em-header-actions">
+                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm">
+                    <i class="fa-brands fa-github"></i> GitHub Reposu
+                </a>
+                <button class="em-menu-toggle" id="menu-toggle" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Bölümü (Ana Karşılama) -->
+    <section id="hero" class="em-hero">
+        <div class="em-container em-hero-grid">
+            <div class="em-hero-content">
+                <div class="em-hero-tag">
+                    <i class="fa-solid fa-cubes-stacked"></i> MULTİDİSİPLİNER MÜHENDİSLİK KOLEKTİFİ
+                </div>
+                <h1 class="em-hero-title">
+                    Teoriden Pratiğe <br><span class="em-gradient-text">İleri Mühendislik Projeleri</span>
+                </h1>
+                <p class="em-hero-subtitle">
+                    <strong>Eternal-Morph</strong>; Makine, Elektrik-Elektronik ve Yazılım Mühendisliği öğrencilerini bir araya getiren bağımsız bir multidisipliner proje geliştirme ekibidir. Tasarımlarımızı <strong>SolidWorks / Fusion 360</strong> ortamında modelleyip, <strong>1. Aşama Simülasyon ve Sanal İkiz (Digital Twin)</strong> evresinde benzetimlerini eksiksiz doğruluyoruz.
+                </p>
+                <div class="em-hero-buttons">
+                    <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-primary">
+                        <i class="fa-brands fa-github"></i> GitHub Organizasyonumuzu İncele
+                    </a>
+                    <a href="/information/" class="em-btn em-btn-secondary">
+                        <i class="fa-solid fa-circle-info"></i> Mühendislik Vizyonumuz
+                    </a>
+                </div>
+            </div>
+
+            <!-- Canlı İnteraktif Telemetri & Terminal Konsolu Widget'ı -->
+            <div class="em-hero-visual-card">
+                <div class="em-telemetry-dashboard">
+                    <div class="em-telem-item">
+                        <span class="em-telem-label">ROS2 FREKANS</span>
+                        <span class="em-telem-val t-green" id="telem-hz">1000 Hz</span>
+                    </div>
+                    <div class="em-telem-item">
+                        <span class="em-telem-label">SİMÜLASYON GECİKME</span>
+                        <span class="em-telem-val t-cyan" id="telem-latency">0.42 ms</span>
+                    </div>
+                    <div class="em-telem-item">
+                        <span class="em-telem-label">PITCH / ROLL</span>
+                        <span class="em-telem-val t-yellow" id="telem-angle">0.02° / -0.01°</span>
+                    </div>
+                </div>
+
+                <div class="em-terminal-window">
+                    <div class="em-terminal-header">
+                        <div class="em-terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="em-terminal-title">simulation_phase1_lab.log — Eternal-Morph</span>
+                    </div>
+                    <div class="em-terminal-body" id="terminal-output">
+                        <p class="t-green">[INFO] Eternal-Morph Multidisciplinary Lab: Active</p>
+                        <p class="t-cyan">[CAD] SolidWorks / Fusion 360 Models & URDF Exported [OK]</p>
+                        <p class="t-white">[SIMULATION] Gazebo & Isaac Sim Physics Environment: Running</p>
+                        <p class="t-yellow">[MORPHOROBOT] Air/Land Transition Simulation: Testing...</p>
+                        <p class="t-purple">[UR10_HAND] MoveIt2 Kinematic Trajectory Solver: Active</p>
+                        <p class="t-green">[STATUS] Phase 1 Virtual Twin Simulation: IN PROGRESS</p>
+                        <p class="t-cursor">$ eternal-morph --run-phase1-sim<span class="blink">_</span></p>
+                    </div>
+                </div>
+
+                <div class="em-hero-tech-specs">
+                    <div class="em-spec-chip">
+                        <i class="fa-solid fa-cube"></i> SolidWorks / Fusion 360
+                    </div>
+                    <div class="em-spec-chip">
+                        <i class="fa-solid fa-gear"></i> Gazebo & Isaac Sim
+                    </div>
+                    <div class="em-spec-chip">
+                        <i class="fa-solid fa-code"></i> ROS 2 Kinematics
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teknoloji Yığını Rozetleri (Tech Stack Bar) -->
+        <div class="em-container">
+            <div class="em-tech-stack-bar">
+                <span class="em-tech-stack-title"><i class="fa-solid fa-layer-group"></i> TEKNOLOJİ ALTYAPIMIZ:</span>
+                <div class="em-tech-logos">
+                    <span class="em-tech-tag"><i class="fa-solid fa-cube"></i> SolidWorks</span>
+                    <span class="em-tech-tag"><i class="fa-solid fa-drafting-compass"></i> Fusion 360</span>
+                    <span class="em-tech-tag"><i class="fa-solid fa-chart-line"></i> ANSYS FEA/CFD</span>
+                    <span class="em-tech-tag"><i class="fa-solid fa-microchip"></i> Altium Designer</span>
+                    <span class="em-tech-tag"><i class="fa-solid fa-bolt"></i> STM32 FreeRTOS</span>
+                    <span class="em-tech-tag"><i class="fa-solid fa-terminal"></i> ROS 2 Humble</span>
+                    <span class="em-tech-tag"><i class="fa-solid fa-box-open"></i> Gazebo Physics</span>
+                    <span class="em-tech-tag"><i class="fa-solid fa-code"></i> C++ / Python</span>
+                </div>
+            </div>
+
+            <!-- İstatistikler / Metrikler -->
+            <div class="em-stats-bar">
+                <div class="em-stat-card">
+                    <div class="em-stat-number" data-target="1" data-suffix=". Aşama">0</div>
+                    <div class="em-stat-label">Şu Anki Simülasyon Evresi</div>
+                </div>
+                <div class="em-stat-card">
+                    <div class="em-stat-number" data-target="3" data-suffix=" Ana Disiplin">0</div>
+                    <div class="em-stat-label">Makine, Elektrik, Yazılım</div>
+                </div>
+                <div class="em-stat-card">
+                    <div class="em-stat-number" data-target="100">%0</div>
+                    <div class="em-stat-label">Sanal İkiz Doğrulama Odaklılık</div>
+                </div>
+                <div class="em-stat-card">
+                    <div class="em-stat-number" data-target="2" data-suffix=" Amiral Proje">0</div>
+                    <div class="em-stat-label">Geliştirme Aşamasındaki Proje</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF WEBGL 3D CAD MODEL İNCELEME PENCERESİ (THREE.JS VIEWER) -->
+    <section class="em-section">
+        <div class="em-container">
+            <div class="em-section-header">
+                <span class="em-section-subtitle"><i class="fa-solid fa-vr-cardboard"></i> INTERACTIVE WEBGL 3D CAD VIEWER</span>
+                <h2 class="em-section-title">Canlı 3D Sanal İkiz CAD İnceleme</h2>
+                <p class="em-section-desc">SolidWorks / Fusion 360 3D CAD modelimizi tarayıcınızda 360° döndürerek, tel kafes (wireframe) veya katı model olarak inceleyebilirsiniz.</p>
+            </div>
+
+            <div class="em-3d-viewer-card">
+                <div class="em-3d-viewer-header">
+                    <div class="em-3d-header-title">
+                        <span class="em-status-tag"><i class="fa-solid fa-cube"></i> Three.js WebGL Motoru</span>
+                        <h3>MORPHOROBOT 3D HİBRİT DRONE CAD MODELİ</h3>
+                    </div>
+                    <div class="em-3d-controls">
+                        <button class="em-3d-btn active" id="btn-3d-solid"><i class="fa-solid fa-cube"></i> Katı Model</button>
+                        <button class="em-3d-btn" id="btn-3d-wireframe"><i class="fa-solid fa-border-none"></i> Tel Kafes (Wireframe)</button>
+                        <button class="em-3d-btn" id="btn-3d-rotate"><i class="fa-solid fa-rotate"></i> Otomatik Döndür</button>
+                    </div>
+                </div>
+
+                <div class="em-3d-canvas-container" id="3d-canvas-box">
+                    <!-- Three.js 3D WebGL Sahnesi JavaScript tarafından yüklenecektir -->
+                </div>
+
+                <div class="em-3d-footer">
+                    <span><i class="fa-solid fa-hand-pointer"></i> Sol tık ile döndürün, sağ tık ile kaydırın, fare tekerleği ile yakınlaşın.</span>
+                    <span class="t-cyan"><i class="fa-solid fa-bolt"></i> WebGL GPU Acceleration: Active</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ekip Vizyonu & Multidisipliner Çalışma Kültürü Bölümü -->
+    <section id="vizyon" class="em-section em-section-alt">
+        <div class="em-container">
+            <div class="em-section-header">
+                <span class="em-section-subtitle"><i class="fa-solid fa-bullseye"></i> ÇALIŞMA KÜLTÜRÜMÜZ</span>
+                <h2 class="em-section-title">Multidisipliner Mühendislik Yaklaşımı</h2>
+                <p class="em-section-desc">Farklı mühendislik disiplinlerinin teorik bir birleşimi değil; aynı masa etrafında gerçek projeler üreten entegre bir mühendislik ekibiyiz.</p>
+            </div>
+
+            <div class="em-values-grid">
+                <div class="em-value-card">
+                    <div class="em-value-icon"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>Bütünsel Mühendislik Sinerjisi</h3>
+                    <p>Mekanik tasarımcılar, donanım mühendisleri ve yazılım mimarları projenin ilk fikrinden nihai prototipine kadar tüm kararları birlikte alır, sistem seviyesinde entegrasyon sağlar.</p>
+                </div>
+                <div class="em-value-card">
+                    <div class="em-value-icon em-icon-cyan"><i class="fa-solid fa-flask-vial"></i></div>
+                    <h3>Simülasyon Odaklı Geliştirme</h3>
+                    <p>Hataları fiziksel üretim öncesinde tespit etmek için sistemlerimizi SolidWorks / Fusion 360 ile hazırlayıp simülasyon ortamlarında modelliyor, donanımı sanal ikizle (Digital Twin) test ediyoruz.</p>
+                </div>
+                <div class="em-value-card">
+                    <div class="em-value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>Sürekli İnovasyon & Açık Fikirler</h3>
+                    <p>Belirli bir ürün kategorisine sıkışıp kalmadan; otonom araçlar, biyonik sistemler, akıllı donanımlar ve endüstriyel çözümler gibi geniş bir yelpazede yenilikçi projeler üretiyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İNTERAKTİF SİSTEM MİMARİSİ KEŞFEDİCİ -->
+    <section id="mimari" class="em-section">
+        <div class="em-container">
+            <div class="em-section-header">
+                <span class="em-section-subtitle"><i class="fa-solid fa-sitemap"></i> DİSİPLİNLERARASI MİMARİ</span>
+                <h2 class="em-section-title">Proje Entegrasyon Mimarimiz</h2>
+                <p class="em-section-desc">Makine, Elektrik ve Yazılım disiplinlerimizin bir projeyi ortaklaşa nasıl ayağa kaldırdığını interaktif olarak inceleyin.</p>
+            </div>
+
+            <div class="em-architecture-explorer">
+                <div class="em-arch-tabs">
+                    <button class="em-arch-tab active" data-arch="mech">
+                        <i class="fa-solid fa-compass-drafting"></i> 1. Makine Mühendisliği Katmanı
+                    </button>
+                    <button class="em-arch-tab" data-arch="elec">
+                        <i class="fa-solid fa-microchip"></i> 2. Elektrik-Elektronik Katmanı
+                    </button>
+                    <button class="em-arch-tab" data-arch="soft">
+                        <i class="fa-solid fa-code"></i> 3. Yazılım & Otonomi Katmanı
+                    </button>
+                </div>
+
+                <div class="em-arch-content-box" id="arch-display-content">
+                    <div class="em-arch-info">
+                        <div class="em-arch-badge"><i class="fa-solid fa-cube"></i> Mekanik & Aerodinamik Mimarisi</div>
+                        <h3>SolidWorks / Fusion 360 CAD & Aerodinamik Şasi</h3>
+                        <p>Projelerimizin fiziksel yapısı, kütle merkezleri ve eklem kinematiği SolidWorks / Fusion 360 ortamında parametrik olarak modellenir. ANSYS ile gerilme ve akış analizleri yapıldıktan sonra URDF/Xacro formatında simülasyon katmanına aktarılır.</p>
+                        <div class="em-arch-highlights-list">
+                            <span><i class="fa-solid fa-check"></i> Parametrik CAD Montajı</span>
+                            <span><i class="fa-solid fa-check"></i> Aerodinamik CFD Testleri</span>
+                            <span><i class="fa-solid fa-check"></i> URDF Kütle & Eylemsizlik Aktarımı</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJE SPESİFİKASYON KARŞILAŞTIRMA MATRİSİ -->
+    <section class="em-section em-section-alt">
+        <div class="em-container">
+            <div class="em-section-header">
+                <span class="em-section-subtitle"><i class="fa-solid fa-table-cells"></i> MÜHENDİSLİK MİMARİ KARŞILAŞTIRMASI</span>
+                <h2 class="em-section-title">Projelerimizin Spesifikasyon Matrisi</h2>
+                <p class="em-section-desc">Geliştirilen platformların 1. Aşama simülasyon parametreleri ve teknik nitelikleri.</p>
+            </div>
+
+            <div class="em-matrix-wrapper">
+                <table class="em-matrix-table">
+                    <thead>
+                        <tr>
+                            <th>PROJE SPESİFİKASYONU</th>
+                            <th>MORPHOROBOT HİBRİT DRONE</th>
+                            <th>UR10 ENTEGRE BİYONİK EL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fa-solid fa-cube t-cyan"></i> CAD & Modelleme Yazılımı</td>
+                            <td>SolidWorks / Fusion 360</td>
+                            <td>SolidWorks / Fusion 360</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-sliders t-cyan"></i> 1. Aşama Simülasyon Motoru</td>
+                            <td>ROS 2 Humble & Gazebo Physics</td>
+                            <td>ROS 2 & MoveIt2 Trajectory Solver</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-network-wired t-cyan"></i> Kontrol Düğümleri & Protokol</td>
+                            <td>CAN-Bus / UART Telemetri</td>
+                            <td>URScript / ISO 9409-1 Flanş Uyumlu</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-microchip t-cyan"></i> Donanım İşlemci Mimarisi</td>
+                            <td>STM32H7 Dual-Core ARM Cortex-M7</td>
+                            <td>STM32F4 Real-time Motor Control</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa-solid fa-shield-halved t-cyan"></i> Mevcut Evre & Açık Kaynak Statusu</td>
+                            <td><span class="em-step-tag em-tag-active">1. Aşama Simülasyon (GitHub)</span></td>
+                            <td><span class="em-step-tag em-tag-active">1. Aşama Kinematik (GitHub)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projelerimiz Bölümü -->
+    <section id="projeler" class="em-section">
+        <div class="em-container">
+            <div class="em-section-header">
+                <span class="em-section-subtitle"><i class="fa-solid fa-diagram-project"></i> MÜHENDİSLİK PROJELERİMİZ</span>
+                <h2 class="em-section-title">1. Aşama Simülasyondaki Projelerimiz</h2>
+                <p class="em-section-desc">Şu anda 1. Aşama simülasyon ve sanal ikiz testi yürütülen amiral gemisi projelerimiz. Kodlarımızı GitHub reposundan inceleyebilirsiniz.</p>
+            </div>
+
+            <div class="em-projects-grid">
+                
+                <!-- PROJE 1: MORPHOROBOT -->
+                <div class="em-project-card em-card-featured" id="card-morphorobot">
+                    <div class="em-project-badge">Çok Modlu Hibrit Mühendislik Projesi</div>
+                    <div class="em-project-image-wrapper">
+                        <img src="assets/morphorobot.jpg" alt="Morphorobot Render" class="em-project-img" id="morphorobot-img">
+                        <div class="em-project-overlay">
+                            <span class="em-status-tag"><i class="fa-solid fa-cube"></i> 1. Aşama: Simülasyon Evresinde</span>
+                        </div>
+                    </div>
+                    
+                    <div class="em-project-body">
+                        <h3 class="em-project-title">MORPHOROBOT</h3>
+                        <p class="em-project-summary">
+                            Hem döner kanatlı aerodinamik uçuş hem de yüksek torklu tekerlekli arazi sürüşünü tek bir şaside birleştiren hibrit platform projemiz. SolidWorks / Fusion 360 modelleri Gazebo 1. Aşama simülasyon ortamında aerodinamik testten geçmektedir.
+                        </p>
+
+                        <!-- Etkileşimli Mod Değiştirici Simülatör -->
+                        <div class="em-mode-simulator">
+                            <div class="em-sim-header">
+                                <span><i class="fa-solid fa-sliders"></i> Digital Twin Mod Simülasyonu:</span>
+                            </div>
+                            <div class="em-sim-controls">
+                                <button class="em-sim-btn active" data-mode="land">
+                                    <i class="fa-solid fa-car-side"></i> Kara Sürüşü (Sim)
+                                </button>
+                                <button class="em-sim-btn" data-mode="air">
+                                    <i class="fa-solid fa-plane-up"></i> Uçuş Modu (Sim)
+                                </button>
+                            </div>
+                            <div class="em-sim-display" id="mode-display-box">
+                                <div class="em-mode-info">
+                                    <span class="em-mode-status-title" id="mode-title">KARA SÜRÜŞ MODU SIM</span>
+                                    <span class="em-mode-status-desc" id="mode-desc">Gazebo tekerlek fizik motoru aktif. 1. Aşama simülasyon ortamında şasi dengesi ve aerodinamik sürüklenme benzetimi yürütülmektedir.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Özellik Listesi -->
+                        <div class="em-project-features">
+                            <div class="em-feature-item">
+                                <i class="fa-solid fa-cube"></i>
+                                <div>
+                                    <strong>CAD & Sanal İkiz (URDF / Gazebo):</strong>
+                                    <span>SolidWorks / Fusion 360 kütle ve eylemsizlik benzetimi</span>
+                                </div>
+                            </div>
+                            <div class="em-feature-item">
+                                <i class="fa-solid fa-microchip"></i>
+                                <div>
+                                    <strong>Donanım Mimarısı (Tasarlanan):</strong>
+                                    <span>STM32H7 mikrodenetleyici ve CAN-Bus sürücü kartı</span>
+                                </div>
+                            </div>
+                            <div class="em-feature-item">
+                                <i class="fa-solid fa-code"></i>
+                                <div>
+                                    <strong>Yazılım Mimarisi:</strong>
+                                    <span>ROS 2 Humble düğümleri ve mod değişimi kontrolcüleri</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="em-project-footer-btns">
+                            <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-primary em-btn-block">
+                                <i class="fa-brands fa-github"></i> Morphorobot GitHub Reposuna Git
+                            </a>
+                            <button class="em-btn em-btn-secondary em-btn-block" onclick="openProjectModal('morphorobot')" style="margin-top:8px;">
+                                <i class="fa-solid fa-circle-info"></i> Simülasyon Raporu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJE 2: UR10 ENTEGRE ROBOT EL -->
+                <div class="em-project-card" id="card-robot-hand">
+                    <div class="em-project-badge em-badge-alt">Biyonik & Mekatronik Proje</div>
+                    <div class="em-project-image-wrapper">
+                        <img src="assets/robot_hand.jpg" alt="UR10 Robot El Render" class="em-project-img">
+                        <div class="em-project-overlay">
+                            <span class="em-status-tag em-tag-cyan"><i class="fa-solid fa-cube"></i> 1. Aşama: Kinematik Simülasyon</span>
+                        </div>
+                    </div>
+                    
+                    <div class="em-project-body">
+                        <h3 class="em-project-title">UR10 ROBOT EL</h3>
+                        <p class="em-project-summary">
+                            Universal Robots UR10 endüstriyel kolu ile senkronize çalışacak biyonik robotik el projemiz. SolidWorks / Fusion 360 parmak kinematiği 1. Aşama MoveIt2 simülasyon ortamında test edilmektedir.
+                        </p>
+
+                        <div class="em-tech-chips">
+                            <span><i class="fa-solid fa-check"></i> MoveIt2 / ROS2</span>
+                            <span><i class="fa-solid fa-check"></i> 1. Aşama Kinematik</span>
+                            <span><i class="fa-solid fa-check"></i> SolidWorks / Fusion 360</span>
+                        </div>
+
+                        <div class="em-project-footer-btns">
+                            <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-primary em-btn-block">
+                                <i class="fa-brands fa-github"></i> Robot El GitHub Reposuna Git
+                            </a>
+                            <button class="em-btn em-btn-secondary em-btn-block" onclick="openProjectModal('robothand')" style="margin-top:8px;">
+                                <i class="fa-solid fa-circle-info"></i> Simülasyon Raporu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- GitHub Organizasyon Çağrısı Kutusu -->
+            <div class="em-future-projects-box">
+                <div class="em-future-content">
+                    <div class="em-future-icon"><i class="fa-brands fa-github"></i></div>
+                    <div>
+                        <h3>Açık Kaynak Mühendislik Depomuz (GitHub)</h3>
+                        <p>Eternal-Morph projelerinin tüm SolidWorks / Fusion 360 CAD tasarım dosyaları, ROS2 paketleri ve URDF simülasyon modelleri açık kaynak olarak GitHub organizasyonumuzda yayınlanmaktadır.</p>
+                    </div>
+                </div>
+                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-primary">
+                    <i class="fa-brands fa-github"></i> GitHub'da İncele & Yıldızla
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ekibe Katıl / Çağrı Bölümü -->
+    <section id="katil" class="em-section">
+        <div class="em-container">
+            <div class="em-about-box">
+                <div class="em-about-content">
+                    <span class="em-section-subtitle"><i class="fa-solid fa-user-plus"></i> EKİBİMİZE KATILIN</span>
+                    <h2 class="em-about-title">Geleceğin İleri Mühendislik Projelerini Birlikte Üretelim</h2>
+                    <p>
+                        Sen de Makine, Elektrik-Elektronik veya Yazılım Mühendisliği öğrencisiysen; teorik bilgilerini **SolidWorks / Fusion 360 CAD modelleri**, **Gazebo simülasyonları** ve **sanal ikiz (Digital Twin)** üzerinde geliştirmek istiyorsan <strong>Eternal-Morph</strong> ekibine katılabilirsin!
+                    </p>
+                    <div class="em-about-highlights">
+                        <a href="/contact/" class="em-btn em-btn-primary">
+                            <i class="fa-solid fa-user-check"></i> Takıma Başvur
+                        </a>
+                        <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-secondary">
+                            <i class="fa-brands fa-github"></i> GitHub Reposu
+                        </a>
+                    </div>
+                </div>
+                <div class="em-about-visual">
+                    <div class="em-card-glass">
+                        <img src="assets/logo.png" alt="Eternal-Morph Emblem" class="em-about-logo">
+                        <h3>ETERNAL-MORPH</h3>
+                        <p>Multidisciplinary Engineering Lab</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="em-footer">
+        <div class="em-container em-footer-content">
+            <div class="em-footer-brand">
+                <img src="assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
+                <div>
+                    <h4>ETERNAL-MORPH</h4>
+                    <p>Multidisipliner Mühendislik Proje Ekibi</p>
+                </div>
+            </div>
+            <div class="em-footer-links">
+                <a href="/">Ana Sayfa</a>
+                <a href="/information/">Bilgi & Vizyon</a>
+                <a href="/projects/">Projelerimiz</a>
+                <a href="/contact/">İletişim</a>
+                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub Reposu</a>
+            </div>
+            <div class="em-footer-copy">
+                <p>&copy; 2026 Eternal-Morph Multidisipliner Mühendislik Proje Ekibi. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJE DETAY MODALI -->
+    <div class="em-modal-backdrop" id="project-modal">
+        <div class="em-modal-content">
+            <button class="em-modal-close" id="modal-close-btn">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- İLETİŞİM / BAŞVURU MODALI -->
+    <div class="em-modal-backdrop" id="contact-modal">
+        <div class="em-modal-content em-modal-sm">
+            <button class="em-modal-close" id="contact-modal-close-btn">&times;</button>
+            <div class="em-contact-form-wrapper">
+                <h3 class="em-modal-title" id="contact-modal-title"><i class="fa-solid fa-paper-plane"></i> Eternal-Morph İletişim</h3>
+                <p id="contact-modal-desc">Başvuru, proje fikri veya iş birliği talebiniz için mesaj gönderin (Doğrudan <strong>eternalmorph26@gmail.com</strong> adresine iletilir).</p>
+                <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                    <input type="hidden" name="to_email" value="eternalmorph26@gmail.com">
+
+                    <div class="em-form-group">
+                        <label for="c-name">Adınız Soyadınız / Kurum</label>
+                        <input type="text" name="name" id="c-name" class="em-form-input" placeholder="Örn: Ahmet Yılmaz" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-department">Bölümünüz / Mesleğiniz</label>
+                        <input type="text" name="department" id="c-department" class="em-form-input" placeholder="Örn: Makine Mühendisliği (3. Sınıf)" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-email">E-posta Adresiniz</label>
+                        <input type="email" name="email" id="c-email" class="em-form-input" placeholder="ahmet@ornek.com" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-subject">Konu</label>
+                        <input type="text" name="subject" id="c-subject" class="em-form-input" value="Genel İletişim" required>
+                    </div>
+                    <div class="em-form-group">
+                        <label for="c-message">Mesajınız</label>
+                        <textarea name="message" id="c-message" class="em-form-input" rows="4" placeholder="Mesajınızı veya başvuru detayınızı yazın..." required></textarea>
+                    </div>
+                    <button type="submit" class="em-btn em-btn-primary em-btn-block">
+                        <i class="fa-solid fa-paper-plane"></i> Gönder (eternalmorph26@gmail.com)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
