@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/assets/logo.png">
 
-    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eternalmorph.com.tr/projects/">
     <meta property="og:title" content="Projelerimiz & Ar-Ge Portföyü | Eternal-Morph">
@@ -34,7 +34,7 @@
     <meta name="twitter:description" content="Morphorobot ve UR10 Robot El amiral gemisi projelerimiz ve simülasyon portföyümüz.">
     <meta name="twitter:image" content="https://eternalmorph.com.tr/assets/morphorobot.jpg">
 
-    <!-- JSON-LD Structured Data (Schema.org) -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,21 +50,14 @@
     }
     </script>
     
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icon Set -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Three.js 3D WebGL Library & OrbitControls -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
     <link rel="stylesheet" href="../style.css">
 </head>
-<body class="em-dark-theme">
+<body>
 
     <div class="em-bg-glow"></div>
     <div class="em-bg-grid"></div>
@@ -76,13 +69,13 @@
                 <img src="../assets/logo.png" alt="Eternal-Morph Logo" class="em-brand-logo">
                 <div class="em-brand-text">
                     <span class="em-brand-main">ETERNAL-MORPH</span>
-                    <span class="em-brand-sub"><i class="fa-solid fa-gears"></i> MÜHENDİSLİK PROJE EKİBİ</span>
+                    <span class="em-brand-sub">ENGINEERING COLLECTIVE</span>
                 </div>
             </a>
 
             <div class="em-status-badge">
                 <span class="em-pulse-dot"></span>
-                <span>1. AŞAMA: SİMÜLASYON & AR-GE EVRESİ</span>
+                <span>1. AŞAMA: SİMÜLASYON & AR-GE</span>
             </div>
 
             <nav class="em-nav" id="nav-menu">
@@ -98,91 +91,87 @@
                 <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm">
                     <i class="fa-brands fa-github"></i> GitHub Reposu
                 </a>
+                <button class="em-menu-toggle" id="menu-toggle" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Inner Page Hero -->
+    <!-- Projects Hero -->
     <section class="em-hero" style="padding-top:140px; padding-bottom:40px;">
         <div class="em-container">
             <div class="em-hero-tag">
-                <i class="fa-solid fa-cubes"></i> PROJECTS & R&D PORTFOLIO
+                <i class="fa-solid fa-layer-group"></i> ENGINEERING PORTFOLIO
             </div>
             <h1 class="em-hero-title">
-                Geliştirdiğimiz <span class="em-gradient-text">İleri Mühendislik Projeleri</span>
+                Projelerimiz & <span class="em-gradient-text">Ar-Ge Portföyümüz</span>
             </h1>
             <p class="em-hero-subtitle">
-                Şu anda 1. Aşama Sanal İkiz ve Simülasyon (Gazebo / MoveIt2) evresinde geliştirilen amiral gemisi projelerimiz. Tasarım dosyalarına ve kaynak kodlarına GitHub reposundan erişebilirsiniz.
+                1. Aşama simülasyon ve sanal ikiz (Digital Twin) ortamında kütle, kinematik ve aerodinamik benzetimleri tamamlanan amiral gemisi robotik platformlarımız.
             </p>
         </div>
     </section>
 
-    <!-- 3D WebGL CAD Viewer Section -->
+    <!-- Projects Grid Section -->
     <section class="em-section">
-        <div class="em-container">
-            <div class="em-3d-viewer-card">
-                <div class="em-3d-viewer-header">
-                    <div class="em-3d-header-title">
-                        <span class="em-status-tag"><i class="fa-solid fa-cube"></i> Three.js WebGL Motoru</span>
-                        <h3>MORPHOROBOT 3D HİBRİT DRONE CAD MODELİ</h3>
-                    </div>
-                    <div class="em-3d-controls">
-                        <button class="em-3d-btn active" id="btn-3d-solid"><i class="fa-solid fa-cube"></i> Katı Model</button>
-                        <button class="em-3d-btn" id="btn-3d-wireframe"><i class="fa-solid fa-border-none"></i> Tel Kafes (Wireframe)</button>
-                        <button class="em-3d-btn" id="btn-3d-rotate"><i class="fa-solid fa-rotate"></i> Otomatik Döndür</button>
-                    </div>
-                </div>
-
-                <div class="em-3d-canvas-container" id="3d-canvas-box">
-                    <!-- Three.js Canvas -->
-                </div>
-
-                <div class="em-3d-footer">
-                    <span><i class="fa-solid fa-hand-pointer"></i> Sol tık ile döndürün, sağ tık ile kaydırın, fare tekerleği ile yakınlaşın.</span>
-                    <span class="t-cyan"><i class="fa-solid fa-bolt"></i> WebGL GPU Acceleration: Active</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projeler Vitrini -->
-    <section class="em-section em-section-alt">
         <div class="em-container">
             <div class="em-projects-grid">
                 
-                <!-- PROJE 1: MORPHOROBOT -->
-                <div class="em-project-card em-card-featured" id="card-morphorobot">
-                    <div class="em-project-badge">Çok Modlu Hibrit Mühendislik Projesi</div>
+                <!-- MORPHOROBOT -->
+                <div class="em-project-card" id="card-morphorobot">
+                    <div class="em-project-badge"><i class="fa-solid fa-car-side"></i> &bull; <i class="fa-solid fa-plane-up"></i> Hibrit Arazi/Hava Platformu</div>
                     <div class="em-project-image-wrapper">
-                        <img src="../assets/morphorobot.jpg" alt="Morphorobot Render" class="em-project-img" id="morphorobot-img">
+                        <img src="../assets/morphorobot.jpg" alt="Morphorobot Render" class="em-project-img">
                         <div class="em-project-overlay">
-                            <span class="em-status-tag"><i class="fa-solid fa-cube"></i> 1. Aşama: Simülasyon Evresinde</span>
+                            <span class="em-status-tag"><i class="fa-solid fa-cube"></i> 1. Aşama: Simülasyon</span>
                         </div>
                     </div>
                     
                     <div class="em-project-body">
                         <h3 class="em-project-title">MORPHOROBOT</h3>
                         <p class="em-project-summary">
-                            Hem döner kanatlı aerodinamik uçuş hem de yüksek torklu tekerlekli arazi sürüşünü tek bir şaside birleştiren hibrit platform projemiz. SolidWorks / Fusion 360 modelleri Gazebo 1. Aşama simülasyon ortamında aerodinamik testten geçmektedir.
+                            Döner kanatlı VTOL uçuş ile 4 tekerlekli yüksek torklu arazi sürüşünü tek şaside birleştiren hibrit robot platformumuz. SolidWorks CAD modeli Gazebo ortamında aerodinamik ve zemin çekiş testlerinden geçmektedir.
                         </p>
 
-                        <!-- Etkileşimli Mod Değiştirici Simülatör -->
                         <div class="em-mode-simulator">
                             <div class="em-sim-header">
-                                <span><i class="fa-solid fa-sliders"></i> Digital Twin Mod Simülasyonu:</span>
+                                <i class="fa-solid fa-sliders"></i> Digital Twin Dinamik Mod Değiştirici:
                             </div>
                             <div class="em-sim-controls">
                                 <button class="em-sim-btn active" data-mode="land">
                                     <i class="fa-solid fa-car-side"></i> Kara Sürüşü (Sim)
                                 </button>
                                 <button class="em-sim-btn" data-mode="air">
-                                    <i class="fa-solid fa-plane-up"></i> Uçuş Modu (Sim)
+                                    <i class="fa-solid fa-plane-up"></i> VTOL Uçuş (Sim)
                                 </button>
                             </div>
-                            <div class="em-sim-display" id="mode-display-box">
-                                <div class="em-mode-info">
-                                    <span class="em-mode-status-title" id="mode-title">KARA SÜRÜŞ MODU SIM</span>
-                                    <span class="em-mode-status-desc" id="mode-desc">Gazebo tekerlek fizik motoru aktif. 1. Aşama simülasyon ortamında şasi dengesi ve aerodinamik sürüklenme benzetimi yürütülmektedir.</span>
+                            <div class="em-sim-display">
+                                <span class="em-mode-status-title" id="mode-title">KARA SÜRÜŞ DİNAMİĞİ (SIM)</span>
+                                <span class="em-mode-status-desc" id="mode-desc">Gazebo tekerlek fizik motoru aktif. 1. Aşama simülasyon ortamında şasi dengesi ve zemin çekiş benzetimi yürütülmektedir.</span>
+                            </div>
+                        </div>
+
+                        <div class="em-project-features">
+                            <div class="em-feature-item">
+                                <i class="fa-solid fa-cube"></i>
+                                <div>
+                                    <strong>Parametrik CAD & URDF:</strong>
+                                    <span>SolidWorks / Fusion 360 kütle ve eylemsizlik matrisleri</span>
+                                </div>
+                            </div>
+                            <div class="em-feature-item">
+                                <i class="fa-solid fa-microchip"></i>
+                                <div>
+                                    <strong>Gömülü Donanım:</strong>
+                                    <span>STM32H7 mikrodenetleyici ve CAN-Bus sürücü mimarisi</span>
+                                </div>
+                            </div>
+                            <div class="em-feature-item">
+                                <i class="fa-solid fa-code"></i>
+                                <div>
+                                    <strong>Simülasyon & Kontrol:</strong>
+                                    <span>ROS 2 Humble düğümleri ve VTOL mod geçiş kontrolcüleri</span>
                                 </div>
                             </div>
                         </div>
@@ -192,32 +181,33 @@
                                 <i class="fa-brands fa-github"></i> Morphorobot GitHub Reposuna Git
                             </a>
                             <button class="em-btn em-btn-secondary em-btn-block" onclick="openProjectModal('morphorobot')" style="margin-top:8px;">
-                                <i class="fa-solid fa-circle-info"></i> Simülasyon Raporu
+                                <i class="fa-solid fa-circle-info"></i> Simülasyon Raporunu İncele
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROJE 2: UR10 ENTEGRE ROBOT EL -->
+                <!-- UR10 ROBOT EL -->
                 <div class="em-project-card" id="card-robot-hand">
-                    <div class="em-project-badge em-badge-alt">Biyonik & Mekatronik Proje</div>
+                    <div class="em-project-badge"><i class="fa-solid fa-hand"></i> Biyonik & Mekatronik Sistem</div>
                     <div class="em-project-image-wrapper">
                         <img src="../assets/robot_hand.jpg" alt="UR10 Robot El Render" class="em-project-img">
                         <div class="em-project-overlay">
-                            <span class="em-status-tag em-tag-cyan"><i class="fa-solid fa-cube"></i> 1. Aşama: Kinematik Simülasyon</span>
+                            <span class="em-status-tag"><i class="fa-solid fa-cube"></i> 1. Aşama: Kinematik Simülasyon</span>
                         </div>
                     </div>
                     
                     <div class="em-project-body">
-                        <h3 class="em-project-title">UR10 ROBOT EL</h3>
+                        <h3 class="em-project-title">UR10 BİYONİK ROBOT EL</h3>
                         <p class="em-project-summary">
-                            Universal Robots UR10 endüstriyel kolu ile senkronize çalışacak biyonik robotik el projemiz. SolidWorks / Fusion 360 parmak kinematiği 1. Aşama MoveIt2 simülasyon ortamında test edilmektedir.
+                            Universal Robots UR10 endüstriyel robot koluyla tam uyumlu, insan eli anatomisine sadık 5 parmaklı biyonik robotik el projemiz. Parametrik parmak kinematiği MoveIt 2 ve ROS 2 ortamında doğrulanmaktadır.
                         </p>
 
-                        <div class="em-tech-chips" style="margin-top:20px;">
-                            <span><i class="fa-solid fa-check"></i> MoveIt2 / ROS2</span>
-                            <span><i class="fa-solid fa-check"></i> 1. Aşama Kinematik</span>
+                        <div class="em-tech-chips">
+                            <span><i class="fa-solid fa-check"></i> MoveIt 2 Yörünge Planlama</span>
+                            <span><i class="fa-solid fa-check"></i> 15 DoF Parmak Kinematiği</span>
                             <span><i class="fa-solid fa-check"></i> SolidWorks / Fusion 360</span>
+                            <span><i class="fa-solid fa-check"></i> STM32 Gerçek Zamanlı Kontrol</span>
                         </div>
 
                         <div class="em-project-footer-btns">
@@ -225,7 +215,7 @@
                                 <i class="fa-brands fa-github"></i> Robot El GitHub Reposuna Git
                             </a>
                             <button class="em-btn em-btn-secondary em-btn-block" onclick="openProjectModal('robothand')" style="margin-top:8px;">
-                                <i class="fa-solid fa-circle-info"></i> Simülasyon Raporu
+                                <i class="fa-solid fa-circle-info"></i> Kinematik Raporunu İncele
                             </button>
                         </div>
                     </div>
@@ -233,16 +223,17 @@
 
             </div>
 
+            <!-- Açık Kaynak GitHub Repolarımız Bannerı -->
             <div class="em-future-projects-box">
                 <div class="em-future-content">
                     <div class="em-future-icon"><i class="fa-brands fa-github"></i></div>
                     <div>
-                        <h3>Açık Kaynak Mühendislik Depomuz (GitHub)</h3>
-                        <p>Eternal-Morph projelerinin tüm SolidWorks / Fusion 360 CAD tasarım dosyaları, ROS2 paketleri ve URDF simülasyon modelleri açık kaynak olarak GitHub organizasyonumuzda yayınlanmaktadır.</p>
+                        <h3>Açık Kaynak Mühendislik Ekosistemimiz</h3>
+                        <p>Eternal-Morph projelerine ait tüm SolidWorks & Fusion 360 CAD montajları, ROS 2 paketleri, URDF modelleri ve gömülü yazılım kaynak kodları GitHub organizasyonumuzda açık kaynak olarak yayınlanmaktadır.</p>
                     </div>
                 </div>
                 <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-primary">
-                    <i class="fa-brands fa-github"></i> GitHub'da İncele & Yıldızla
+                    <i class="fa-brands fa-github"></i> GitHub Repolarını İncele
                 </a>
             </div>
         </div>
@@ -251,19 +242,21 @@
     <!-- Footer -->
     <footer class="em-footer">
         <div class="em-container em-footer-content">
-            <div class="em-footer-brand">
-                <img src="../assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
-                <div>
-                    <h4>ETERNAL-MORPH</h4>
-                    <p>Multidisipliner Mühendislik Proje Ekibi</p>
+            <div class="em-footer-top">
+                <div class="em-footer-brand">
+                    <img src="../assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
+                    <div>
+                        <h4>ETERNAL-MORPH</h4>
+                        <p>Multidisipliner Mühendislik & Robotik Laboratuvarı</p>
+                    </div>
                 </div>
-            </div>
-            <div class="em-footer-links">
-                <a href="/">Ana Sayfa</a>
-                <a href="/information/">Bilgi & Vizyon</a>
-                <a href="/projects/">Projelerimiz</a>
-                <a href="/contact/">İletişim</a>
-                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub Reposu</a>
+                <div class="em-footer-links">
+                    <a href="/">Ana Sayfa</a>
+                    <a href="/information/">Bilgi & Vizyon</a>
+                    <a href="/projects/">Projelerimiz</a>
+                    <a href="/contact/">İletişim</a>
+                    <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub</a>
+                </div>
             </div>
             <div class="em-footer-copy">
                 <p>&copy; 2026 Eternal-Morph Multidisipliner Mühendislik Proje Ekibi. Tüm Hakları Saklıdır.</p>
@@ -271,7 +264,7 @@
         </div>
     </footer>
 
-    <!-- PROJE DETAY MODALI -->
+    <!-- Proje Detay Modalı -->
     <div class="em-modal-backdrop" id="project-modal">
         <div class="em-modal-content">
             <button class="em-modal-close" id="modal-close-btn">&times;</button>

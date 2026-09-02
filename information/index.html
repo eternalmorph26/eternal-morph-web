@@ -18,11 +18,11 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/assets/logo.png">
 
-    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://eternalmorph.com.tr/information/">
     <meta property="og:title" content="Ekip Hakkında & Mühendislik Vizyonu | Eternal-Morph">
-    <meta property="og:description" content="Eternal-Morph: Makine, Elektrik-Elektronik ve Yazılım Mühendisliği disiplinlerini birleştiren multidisipliner proje ekibinin vizyonu, HIL ve simülasyon metodolojisi.">
+    <meta property="og:description" content="Eternal-Morph: Makine, Elektrik-Elektronik ve Yazılım Mühendisliği disiplinlerini birleştiren multidisipliner proje ekibinin vizyonu ve metodolojisi.">
     <meta property="og:image" content="https://eternalmorph.com.tr/assets/logo.png">
     <meta property="og:site_name" content="Eternal-Morph">
     <meta property="og:locale" content="tr_TR">
@@ -31,10 +31,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://eternalmorph.com.tr/information/">
     <meta name="twitter:title" content="Ekip Hakkında & Mühendislik Vizyonu | Eternal-Morph">
-    <meta name="twitter:description" content="Multidisipliner mühendislik ekibimizin vizyonu ve HIL simülasyon metodolojimiz.">
+    <meta name="twitter:description" content="Multidisipliner mühendislik ekibimizin vizyonu ve simülasyon metodolojimiz.">
     <meta name="twitter:image" content="https://eternalmorph.com.tr/assets/logo.png">
 
-    <!-- JSON-LD Structured Data (Schema.org) -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -50,17 +50,14 @@
     }
     </script>
     
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icon Set -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="../style.css">
 </head>
-<body class="em-dark-theme">
+<body>
 
     <div class="em-bg-glow"></div>
     <div class="em-bg-grid"></div>
@@ -72,13 +69,13 @@
                 <img src="../assets/logo.png" alt="Eternal-Morph Logo" class="em-brand-logo">
                 <div class="em-brand-text">
                     <span class="em-brand-main">ETERNAL-MORPH</span>
-                    <span class="em-brand-sub"><i class="fa-solid fa-gears"></i> MÜHENDİSLİK PROJE EKİBİ</span>
+                    <span class="em-brand-sub">ENGINEERING COLLECTIVE</span>
                 </div>
             </a>
 
             <div class="em-status-badge">
                 <span class="em-pulse-dot"></span>
-                <span>1. AŞAMA: SİMÜLASYON & AR-GE EVRESİ</span>
+                <span>1. AŞAMA: SİMÜLASYON & AR-GE</span>
             </div>
 
             <nav class="em-nav" id="nav-menu">
@@ -94,6 +91,9 @@
                 <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm">
                     <i class="fa-brands fa-github"></i> GitHub Reposu
                 </a>
+                <button class="em-menu-toggle" id="menu-toggle" aria-label="Menüyü Aç/Kapat">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
@@ -108,61 +108,91 @@
                 Ekip Hakkında & <span class="em-gradient-text">Mühendislik Vizyonu</span>
             </h1>
             <p class="em-hero-subtitle">
-                Eternal-Morph; Makine, Elektrik-Elektronik ve Yazılım Mühendisliği öğrencilerinin teori ile pratiği birleştirerek sanal ikiz (Digital Twin), simülasyon ve HIL mimarisinde projeler geliştirdiği bağımsız bir inovasyon kolektifidir.
+                Eternal-Morph; Makine, Elektrik-Elektronik ve Yazılım Mühendisliği alanındaki yetenekleri birleştirerek sanal ikiz (Digital Twin) ve simülasyon tabanlı ileri Ar-Ge sistemleri geliştiren bağımsız bir inovasyon kolektifidir.
             </p>
         </div>
     </section>
 
-    <!-- Detaylı Vizyon & Metodoloji -->
-    <section class="em-section em-section-alt">
+        <!-- Ekip Vizyonu & Mühendislik Metodolojisi -->
+    <section id="vizyon" class="em-section em-section-alt">
         <div class="em-container">
             <div class="em-section-header">
-                <span class="em-section-subtitle"><i class="fa-solid fa-bullseye"></i> MİSYONUMUZ</span>
-                <h2 class="em-section-title">Disiplinlerarası Proje Geliştirme Mantığı</h2>
-                <p class="em-section-desc">Farklı mühendislik disiplinlerinin aynı masa etrafında gerçek sistemler inşa ettiği entegre bir mühendislik ekibiyiz.</p>
+                <span class="em-section-subtitle"><i class="fa-solid fa-microchip"></i> MÜHENDİSLİK METODOLOJİSİ & ÇALIŞMA KÜLTÜRÜ</span>
+                <h2 class="em-section-title">Uçtan Uca Entegre Mühendislik ve Sanal İkiz Yaklaşımı</h2>
+                <p class="em-section-desc">Mekanik, gömülü donanım ve otonom yazılım katmanlarını geleneksel izole silolardan çıkarıp; tam entegre bir Ar-Ge ve simülasyon döngüsünde birleştiriyoruz.</p>
             </div>
 
             <div class="em-values-grid">
+                <!-- KART 1: Eşzamanlı Sistem Tasarımı -->
                 <div class="em-value-card">
-                    <div class="em-value-icon"><i class="fa-solid fa-network-wired"></i></div>
-                    <h3>Bütünsel Mühendislik Sinerjisi</h3>
-                    <p>Mekanik tasarımcılar, donanım mühendisleri ve yazılım mimarları projenin ilk fikrinden nihai prototipine kadar tüm kararları birlikte alır, sistem seviyesinde entegrasyon sağlar.</p>
+                    <div class="em-value-header">
+                        <div class="em-value-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <span class="em-value-step">01 / EŞZAMANLI DÖNGÜ</span>
+                    </div>
+                    <h3>Disiplinlerarası Entegre Tasarım</h3>
+                    <p>Mekanik CAD modelleme, gömülü PCB tasarımı ve ROS2 yazılım mimarisi birbirinden bağımsız aşamalar olarak değil; ilk günden itibaren ortak arayüz standartları (URDF, CAN-Bus, ISO flanşları) üzerinden eşzamanlı geliştirilir.</p>
+                    <div class="em-value-specs">
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Sıfır Entegrasyon Uyuşmazlığı</span>
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Eşzamanlı CAD-PCB-Firmware Tasarımı</span>
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Sistem Seviyesinde Ön Doğrulama</span>
+                    </div>
                 </div>
+
+                <!-- KART 2: Model Tabanlı Sanal İkiz -->
                 <div class="em-value-card">
-                    <div class="em-value-icon em-icon-cyan"><i class="fa-solid fa-flask-vial"></i></div>
-                    <h3>Simülasyon Odaklı Geliştirme</h3>
-                    <p>Hataları fiziksel üretim öncesinde tespit etmek için sistemlerimizi SolidWorks / Fusion 360 ile hazırlayıp simülasyon ortamlarında modelliyor, donanımı sanal ikizle (Digital Twin) test ediyoruz.</p>
+                    <div class="em-value-header">
+                        <div class="em-value-icon em-icon-accent"><i class="fa-solid fa-cubes-stacked"></i></div>
+                        <span class="em-value-step">02 / MODEL-BASED SIM</span>
+                    </div>
+                    <h3>Model Tabanlı Sanal İkiz Doğrulaması</h3>
+                    <p>Fiziksel üretim maliyet ve risklerini minimize etmek adına; kütle tensörleri, aerodinamik sürüklenme katsayıları ve eklem torkları Gazebo & Isaac Sim ortamlarında yüksek hassasiyetli matematiksel fizik motorlarıyla doğrulanır.</p>
+                    <div class="em-value-specs">
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Gazebo & Isaac Sim Dinamik Doğrulama</span>
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> ANSYS FEA/CFD Akış ve Gerilme Analizi</span>
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Parametrik URDF & Xacro Ağacı</span>
+                    </div>
                 </div>
+
+                <!-- KART 3: HIL & Hızlı Prototipleme -->
                 <div class="em-value-card">
-                    <div class="em-value-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <h3>Sürekli İnovasyon & Açık Fikirler</h3>
-                    <p>Belirli bir ürün kategorisine sıkışıp kalmadan; otonom araçlar, biyonik sistemler, akıllı donanımlar ve endüstriyel çözümler gibi geniş bir yelpazede yenilikçi projeler üretiyoruz.</p>
+                    <div class="em-value-header">
+                        <div class="em-value-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <span class="em-value-step">03 / RAPID HARDWARE</span>
+                    </div>
+                    <h3>HIL Co-Simulation & Hızlı Prototipleme</h3>
+                    <p>Simülasyonda doğrulanan matematiksel modeller; STM32 gömülü kontrol kartları, CAN-Bus telemetri hatları ve CNC işlenmiş kompozit gövdelerle donanım-sanal ikiz döngüsünde (HIL) test edilerek sahaya hazırlanır.</p>
+                    <div class="em-value-specs">
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> STM32 & CAN-Bus Gerçek Zamanlı Test</span>
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> HIL (Hardware-in-the-Loop) Döngüsü</span>
+                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Açık Kaynak CAD & ROS2 Paketleri</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Metodoloji Pipeline -->
+    <!-- 3 Adımlı Geliştirme Metodolojisi -->
     <section class="em-section">
         <div class="em-container">
             <div class="em-section-header">
-                <span class="em-section-subtitle"><i class="fa-solid fa-diagram-next"></i> PROJE GELİŞTİRME SÜRECİ</span>
-                <h2 class="em-section-title">3 Adımlı Geliştirme Metodolojimiz</h2>
+                <span class="em-section-subtitle"><i class="fa-solid fa-diagram-next"></i> GELİŞTİRME PİPELİNE</span>
+                <h2 class="em-section-title">3 Aşamalı Prototipleme Süreci</h2>
+                <p class="em-section-desc">Sanal ortamdan fiziksel üretime uzanan doğrulanabilir mühendislik yol haritamız.</p>
             </div>
 
             <div class="em-hil-pipeline">
                 <div class="em-pipeline-step active-step">
                     <div class="em-step-number">01</div>
                     <div class="em-step-icon em-icon-cyan"><i class="fa-solid fa-cube"></i></div>
-                    <h3>Sanal İkiz & Simülasyon (Aktif Aşama)</h3>
-                    <p>SolidWorks / Fusion 360 CAD modelleri URDF/Xacro formatına aktarılarak Gazebo veya NVIDIA Isaac Sim ortamında kütle, aerodinamik, sürtünme ve eklem fiziği detaylıca benzetimden geçirilir.</p>
+                    <h3>Sanal İkiz & Simülasyon (Aktif)</h3>
+                    <p>SolidWorks / Fusion 360 CAD modelleri URDF/Xacro formatına aktarılarak Gazebo veya Isaac Sim ortamında kütle, aerodinamik ve eklem fiziği detaylıca benzetimden geçirilir.</p>
                     <span class="em-step-tag em-tag-active">Şu Anki Aktif Aşama</span>
                 </div>
 
                 <div class="em-pipeline-step">
                     <div class="em-step-number">02</div>
                     <div class="em-step-icon"><i class="fa-solid fa-microchip"></i></div>
-                    <h3>HIL Co-Simulation (Hedeflenen Evre)</h3>
+                    <h3>HIL Co-Simulation (Hedeflenen)</h3>
                     <p>Tasarladığımız STM32 kontrol kartları, CAN-Bus/UART veri hattı üzerinden simülasyon sunucusuna bağlanır. Gerçek zamanlı donanım ile sanal ikiz aynı anda haberleşir.</p>
                     <span class="em-step-tag">Gelecek 2. Aşama</span>
                 </div>
@@ -181,19 +211,21 @@
     <!-- Footer -->
     <footer class="em-footer">
         <div class="em-container em-footer-content">
-            <div class="em-footer-brand">
-                <img src="../assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
-                <div>
-                    <h4>ETERNAL-MORPH</h4>
-                    <p>Multidisipliner Mühendislik Proje Ekibi</p>
+            <div class="em-footer-top">
+                <div class="em-footer-brand">
+                    <img src="../assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
+                    <div>
+                        <h4>ETERNAL-MORPH</h4>
+                        <p>Multidisipliner Mühendislik & Robotik Laboratuvarı</p>
+                    </div>
                 </div>
-            </div>
-            <div class="em-footer-links">
-                <a href="/">Ana Sayfa</a>
-                <a href="/information/">Bilgi & Vizyon</a>
-                <a href="/projects/">Projelerimiz</a>
-                <a href="/contact/">İletişim</a>
-                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub Reposu</a>
+                <div class="em-footer-links">
+                    <a href="/">Ana Sayfa</a>
+                    <a href="/information/">Bilgi & Vizyon</a>
+                    <a href="/projects/">Projelerimiz</a>
+                    <a href="/contact/">İletişim</a>
+                    <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub</a>
+                </div>
             </div>
             <div class="em-footer-copy">
                 <p>&copy; 2026 Eternal-Morph Multidisipliner Mühendislik Proje Ekibi. Tüm Hakları Saklıdır.</p>
