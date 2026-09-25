@@ -58,9 +58,11 @@
     <!-- FontAwesome Icon Set -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Three.js 3D WebGL Library & OrbitControls -->
+    <!-- Three.js 3D WebGL Library, Loaders & OrbitControls -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/urdf-loader/umd/URDFLoader.js"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -228,9 +230,21 @@
                         <h3>MORPHOROBOT 3D PARAMETRİK CAD MODELİ</h3>
                     </div>
                     <div class="em-3d-controls">
+                        <div class="em-3d-mode-toggle">
+                            <button class="em-3d-btn active" id="btn-mode-default" title="Varsayılan / Park Modu">
+                                <i class="fa-solid fa-power-off"></i> Default
+                            </button>
+                            <button class="em-3d-btn" id="btn-mode-ground" title="Kara Sürüş Modu">
+                                <i class="fa-solid fa-car-side"></i> Kara Modu
+                            </button>
+                            <button class="em-3d-btn" id="btn-mode-air" title="VTOL Uçuş Modu">
+                                <i class="fa-solid fa-plane-up"></i> VTOL Uçuş
+                            </button>
+                        </div>
+                        <div class="em-3d-sep"></div>
                         <button class="em-3d-btn active" id="btn-3d-solid"><i class="fa-solid fa-cube"></i> Katı Model</button>
                         <button class="em-3d-btn" id="btn-3d-wireframe"><i class="fa-solid fa-border-none"></i> Tel Kafes</button>
-                        <button class="em-3d-btn active" id="btn-3d-rotate"><i class="fa-solid fa-rotate"></i> Otomatik Döndür</button>
+                        <button class="em-3d-btn active" id="btn-3d-rotate"><i class="fa-solid fa-rotate"></i> 360° Döndür</button>
                     </div>
                 </div>
 
@@ -423,10 +437,13 @@
                                 <i class="fa-solid fa-sliders"></i> Digital Twin Dinamik Mod Değiştirici:
                             </div>
                             <div class="em-sim-controls">
-                                <button class="em-sim-btn active" data-mode="land">
+                                <button class="em-sim-btn active" data-mode="default_mode">
+                                    <i class="fa-solid fa-power-off"></i> Default / Park (Sim)
+                                </button>
+                                <button class="em-sim-btn" data-mode="ground_mode">
                                     <i class="fa-solid fa-car-side"></i> Kara Sürüşü (Sim)
                                 </button>
-                                <button class="em-sim-btn" data-mode="air">
+                                <button class="em-sim-btn" data-mode="air_mode">
                                     <i class="fa-solid fa-plane-up"></i> VTOL Uçuş (Sim)
                                 </button>
                             </div>
@@ -586,6 +603,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=urdf6"></script>
 </body>
 </html>

@@ -145,22 +145,12 @@ function initScrollSpyAndNavHighlight() {
 /* 4. Morphorobot Mode Simulator */
 function initModeSimulator() {
     const simBtns = document.querySelectorAll(".em-sim-btn");
-    const modeTitle = document.getElementById("mode-title");
-    const modeDesc = document.getElementById("mode-desc");
-
-    if (simBtns.length > 0 && modeTitle && modeDesc) {
+    if (simBtns.length > 0) {
         simBtns.forEach(btn => {
             btn.addEventListener("click", () => {
-                simBtns.forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-
                 const mode = btn.getAttribute("data-mode");
-                if (mode === "land") {
-                    modeTitle.textContent = "KARA SÜRÜŞ DİNAMİĞİ (SIM)";
-                    modeDesc.textContent = "Gazebo tekerlek fizik motoru aktif. 1. Aşama simülasyon ortamında şasi dengesi ve zemin çekiş benzetimi yürütülmektedir.";
-                } else if (mode === "air") {
-                    modeTitle.textContent = "VTOL UÇUŞ DİNAMİĞİ (SIM)";
-                    modeDesc.textContent = "Gazebo aerodinamik itki simülatörü aktif. 4 rotorlu kollar dikey kalkış (VTOL) ve geçiş aerodinamiğini sanal ortamda icra etmektedir.";
+                if (window.setRobotMorphMode) {
+                    window.setRobotMorphMode(mode);
                 }
             });
         });
@@ -337,21 +327,34 @@ function initLiveTelemetryTicker() {
     }
 }
 
-/* 10. Ultra-Optimized 3D WebGL CAD Viewer (Pause when off-screen) */
+/* 10. Ultra-Optimized 3D WebGL CAD Viewer with URDF & STL Loader */
 function initOptimized3DViewer() {
     const container = document.getElementById("3d-canvas-box");
     if (!container || typeof THREE === "undefined") return;
 
+    // Loading indicator element
+    const loaderEl = document.createElement("div");
+    loaderEl.className = "em-3d-loading";
+    loaderEl.innerHTML = `
+        <div class="em-3d-spinner"></div>
+        <span class="em-loader-text">Morphorobot CAD & URDF Modeli Hazırlanıyor...</span>
+    `;
+    container.appendChild(loaderEl);
+    const loaderText = loaderEl.querySelector(".em-loader-text");
+
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf8fafc);
 
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
-    camera.position.set(4.5, 3.5, 5.5);
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.05, 50);
+    camera.position.set(1.5, 1.2, 1.6);
 
     // Fast WebGL Renderer with capped pixel ratio (1.5x max)
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
+    if (THREE.ACESFilmicToneMapping) renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
     container.appendChild(renderer.domElement);
 
     let controls;
@@ -359,85 +362,163 @@ function initOptimized3DViewer() {
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.08;
-        controls.maxPolarAngle = Math.PI / 2 + 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.02;
         controls.enablePan = true;
     }
 
-    const grid = new THREE.GridHelper(10, 20, 0x94a3b8, 0xe2e8f0);
-    grid.position.y = -1;
+    const grid = new THREE.GridHelper(4, 20, 0x94a3b8, 0xe2e8f0);
+    grid.position.y = 0;
     scene.add(grid);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
     scene.add(ambientLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.0);
+    const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.1);
     dirLight1.position.set(5, 10, 7);
     scene.add(dirLight1);
 
+    const dirLight2 = new THREE.DirectionalLight(0x94a3b8, 0.45);
+    dirLight2.position.set(-5, -2, -5);
+    scene.add(dirLight2);
+
     const modelGroup = new THREE.Group();
-
-    const bodyMat = new THREE.MeshStandardMaterial({
-        color: 0x1e293b,
-        metalness: 0.6,
-        roughness: 0.3
-    });
-
-    const accentMat = new THREE.MeshStandardMaterial({
-        color: 0x090d16,
-        metalness: 0.8,
-        roughness: 0.2
-    });
-
-    const rotorMat = new THREE.MeshStandardMaterial({
-        color: 0x64748b,
-        metalness: 0.5,
-        roughness: 0.3,
-        transparent: true,
-        opacity: 0.9
-    });
-
-    // Central Chassis
-    const mainBody = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.9, 0.35, 8), bodyMat);
-    modelGroup.add(mainBody);
-
-    const topCanopy = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.8, 0.25, 8), accentMat);
-    topCanopy.position.y = 0.3;
-    modelGroup.add(topCanopy);
-
-    // Arms
-    const armGeo = new THREE.BoxGeometry(0.12, 0.08, 1.8);
-    const arm1 = new THREE.Mesh(armGeo, bodyMat);
-    arm1.rotation.y = Math.PI / 4;
-    modelGroup.add(arm1);
-
-    const arm2 = new THREE.Mesh(armGeo, bodyMat);
-    arm2.rotation.y = -Math.PI / 4;
-    modelGroup.add(arm2);
-
-    const rotors = [];
-    const rotorOffsets = [
-        [1.27, 0.15, 1.27],
-        [-1.27, 0.15, 1.27],
-        [1.27, 0.15, -1.27],
-        [-1.27, 0.15, -1.27]
-    ];
-
-    rotorOffsets.forEach(pos => {
-        const motor = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.2, 12), accentMat);
-        motor.position.set(pos[0], pos[1], pos[2]);
-        modelGroup.add(motor);
-
-        const rotor = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.02, 0.1), rotorMat);
-        rotor.position.set(pos[0], pos[1] + 0.12, pos[2]);
-        modelGroup.add(rotor);
-        rotors.push(rotor);
-    });
-
     scene.add(modelGroup);
 
+    let robot = null;
     let autoRotate = true;
     let isWireframe = false;
     let isVisibleOnScreen = true;
+    let propAngle = 0;
+
+    // Premium PBR Engineering Materials for URDF Components
+    const matChassis = new THREE.MeshStandardMaterial({
+        color: 0x1e293b,
+        metalness: 0.75,
+        roughness: 0.28
+    });
+    const matMotor = new THREE.MeshStandardMaterial({
+        color: 0x090d16,
+        metalness: 0.9,
+        roughness: 0.2
+    });
+    const matPropeller = new THREE.MeshStandardMaterial({
+        color: 0x0284c7, // Aero Cyan/Blue for spinning rotors
+        metalness: 0.55,
+        roughness: 0.25
+    });
+    const matWheel = new THREE.MeshStandardMaterial({
+        color: 0x18181b, // Tire Rubber
+        metalness: 0.1,
+        roughness: 0.85
+    });
+    const matCamera = new THREE.MeshStandardMaterial({
+        color: 0x0ea5e9,
+        metalness: 0.85,
+        roughness: 0.2
+    });
+    const matLeg = new THREE.MeshStandardMaterial({
+        color: 0x334155,
+        metalness: 0.8,
+        roughness: 0.35
+    });
+
+    if (typeof URDFLoader !== "undefined" && typeof THREE.STLLoader !== "undefined") {
+        const manager = new THREE.LoadingManager();
+        let loadedCount = 0;
+        const totalMeshes = 22; // expected mesh count
+
+        manager.onProgress = function(url, loaded, total) {
+            loadedCount = loaded;
+            if (loaderText) {
+                const pct = Math.min(100, Math.round((loaded / Math.max(total, totalMeshes)) * 100));
+                loaderText.textContent = `CAD Parçaları Yükleniyor... (%${pct})`;
+            }
+        };
+
+        manager.onLoad = function() {
+            if (robot) {
+                robot.updateMatrixWorld(true);
+
+                // Calculate bounding box and center accurately once all meshes are fully loaded
+                const bbox = new THREE.Box3().setFromObject(robot);
+                if (!bbox.isEmpty()) {
+                    const center = bbox.getCenter(new THREE.Vector3());
+                    const size = bbox.getSize(new THREE.Vector3());
+
+                    // Center on X and Z, place ground-contact point on grid Y = 0
+                    robot.position.x = -center.x;
+                    robot.position.z = -center.z;
+                    robot.position.y = -bbox.min.y;
+
+                    const maxDim = Math.max(size.x, size.y, size.z, 0.4);
+                    camera.position.set(maxDim * 1.6, maxDim * 1.2, maxDim * 1.6);
+                    if (controls) {
+                        controls.target.set(0, size.y * 0.4, 0);
+                        controls.update();
+                    }
+                }
+            }
+
+            if (loaderEl) {
+                loaderEl.style.opacity = '0';
+                setTimeout(() => loaderEl.remove(), 300);
+            }
+        };
+
+        manager.onError = function(url) {
+            console.warn("LoadingManager error on:", url);
+        };
+
+        const urdfLoader = new URDFLoader(manager);
+        urdfLoader.loadMeshCb = function(path, m, defaultMat, done) {
+            const cb = typeof done === 'function' ? done : (typeof defaultMat === 'function' ? defaultMat : null);
+            const filename = path.split(/[\\/]/).pop();
+            const realPath = 'assets/model/' + filename;
+            const stlLoader = new THREE.STLLoader(m);
+            stlLoader.load(realPath, function(geom) {
+                geom.computeVertexNormals();
+
+                const lower = filename.toLowerCase();
+                let mat;
+                if (lower.includes('pervane')) {
+                    mat = matPropeller.clone();
+                } else if (lower.includes('teker') && !lower.includes('eksen')) {
+                    mat = matWheel.clone();
+                } else if (lower.includes('motor')) {
+                    mat = matMotor.clone();
+                } else if (lower.includes('camera')) {
+                    mat = matCamera.clone();
+                } else if (lower.includes('bacak') || lower.includes('ayak') || lower.includes('tutucu') || lower.includes('eksen')) {
+                    mat = matLeg.clone();
+                } else {
+                    mat = matChassis.clone();
+                }
+
+                const mesh = new THREE.Mesh(geom, mat);
+                if (cb) cb(mesh);
+            }, null, function(err) {
+                console.warn("STL Loader failed for:", realPath, err);
+                if (cb) cb(null, err);
+            });
+        };
+
+        urdfLoader.load('assets/model/eternalmorph.urdf', function(loadedRobot) {
+            robot = loadedRobot;
+
+            // In ROS coordinate system Z is UP, in Three.js Y is UP
+            robot.rotation.x = -Math.PI / 2;
+            modelGroup.add(robot);
+        }, null, function(err) {
+            console.error("URDF Loading Error:", err);
+            if (loaderText) {
+                loaderText.textContent = "Model yüklenemedi. URDF dosyası kontrol ediliyor.";
+            }
+        });
+    } else {
+        if (loaderText) {
+            loaderText.textContent = "Three.js URDF Loader kütüphanesi bulunamadı.";
+        }
+    }
 
     // INTERSECTION OBSERVER: Pause 3D render loop when user scrolls away!
     // This completely eliminates scroll lag and saves 100% GPU when not looking at 3D!
@@ -453,6 +534,19 @@ function initOptimized3DViewer() {
     const btnSolid = document.getElementById("btn-3d-solid");
     const btnWireframe = document.getElementById("btn-3d-wireframe");
     const btnRotate = document.getElementById("btn-3d-rotate");
+    const btnModeDefault = document.getElementById("btn-mode-default");
+    const btnModeGround = document.getElementById("btn-mode-ground");
+    const btnModeAir = document.getElementById("btn-mode-air");
+
+    if (btnModeDefault) {
+        btnModeDefault.addEventListener("click", () => window.setRobotMorphMode("default_mode"));
+    }
+    if (btnModeGround) {
+        btnModeGround.addEventListener("click", () => window.setRobotMorphMode("ground_mode"));
+    }
+    if (btnModeAir) {
+        btnModeAir.addEventListener("click", () => window.setRobotMorphMode("air_mode"));
+    }
 
     if (btnSolid && btnWireframe && btnRotate) {
         btnSolid.addEventListener("click", () => {
@@ -483,6 +577,100 @@ function initOptimized3DViewer() {
         });
     }
 
+    // Exact ROS/Python kinematic mode dictionary from user
+    const MODE_TARGETS = {
+        default_mode: {
+            sol_on_ground_mode: 0.0,
+            sol_on_air_mode: 0.0,
+            sag_on_ground_mode: 0.0,
+            sag_on_air_mode: 0.0,
+            sol_arka_ground_mode: 0.0,
+            sol_arka_air_mode: 0.0,
+            sag_arka_ground_mode: 0.0,
+            sag_arka_air_mode: 0.0
+        },
+        ground_mode: {
+            sol_on_ground_mode: 1.5708,
+            sol_on_air_mode: 0.0,
+            sag_on_ground_mode: -1.5708,
+            sag_on_air_mode: 0.0,
+            sol_arka_ground_mode: -1.5708,
+            sol_arka_air_mode: 0.0,
+            sag_arka_ground_mode: 1.5708,
+            sag_arka_air_mode: 0.0
+        },
+        air_mode: {
+            sol_on_ground_mode: 1.5708,
+            sol_on_air_mode: -1.5708,
+            sag_on_ground_mode: -1.5708,
+            sag_on_air_mode: 1.5708,
+            sol_arka_ground_mode: -1.5708,
+            sol_arka_air_mode: 1.5708,
+            sag_arka_ground_mode: 1.5708,
+            sag_arka_air_mode: -1.5708
+        }
+    };
+
+    const currentJoints = {
+        sol_on_ground_mode: 0.0,
+        sol_on_air_mode: 0.0,
+        sag_on_ground_mode: 0.0,
+        sag_on_air_mode: 0.0,
+        sol_arka_ground_mode: 0.0,
+        sol_arka_air_mode: 0.0,
+        sag_arka_ground_mode: 0.0,
+        sag_arka_air_mode: 0.0
+    };
+
+    let activeMode = "default_mode";
+    let currentPropSpeed = 0.0;
+    let targetPropSpeed = 0.0;
+
+    window.setRobotMorphMode = function(mode) {
+        // Alias handling
+        if (mode === "land") mode = "ground_mode";
+        if (mode === "air") mode = "air_mode";
+        if (mode === "default") mode = "default_mode";
+
+        if (!MODE_TARGETS[mode]) return;
+        activeMode = mode;
+
+        if (mode === "air_mode") {
+            targetPropSpeed = 0.35; // flight rpm
+        } else {
+            targetPropSpeed = 0.0;  // rotors off in ground/park mode
+        }
+
+        // Synchronize 3D viewer toggle buttons
+        if (btnModeDefault) btnModeDefault.classList.toggle("active", mode === "default_mode");
+        if (btnModeGround) btnModeGround.classList.toggle("active", mode === "ground_mode");
+        if (btnModeAir) btnModeAir.classList.toggle("active", mode === "air_mode");
+
+        // Synchronize simulator buttons below card if present
+        document.querySelectorAll(".em-sim-btn").forEach(btn => {
+            let bMode = btn.getAttribute("data-mode");
+            if (bMode === "land") bMode = "ground_mode";
+            if (bMode === "air") bMode = "air_mode";
+            btn.classList.toggle("active", bMode === mode);
+        });
+
+        // Update mode description in simulator panel
+        const modeTitle = document.getElementById("mode-title");
+        const modeDesc = document.getElementById("mode-desc");
+        if (modeTitle && modeDesc) {
+            if (mode === "default_mode") {
+                modeTitle.textContent = "DEFAULT / PARK MODU (SIM)";
+                modeDesc.textContent = "Sistem nominal bekleme durumunda. Tüm eklem açıları 0.0 radyan nominal referans pozisyonunda kilitli.";
+            } else if (mode === "ground_mode") {
+                modeTitle.textContent = "KARA SÜRÜŞ DİNAMİĞİ (SIM)";
+                modeDesc.textContent = "Tekerlek bacakları 90° (±1.5708 rad) sürüş geometrisine açıldı. 4 tekerlek diferansiyel zemin çekişi simüle edilmektedir.";
+            } else if (mode === "air_mode") {
+                modeTitle.textContent = "VTOL UÇUŞ DİNAMİĞİ (SIM)";
+                modeDesc.textContent = "Kollar aerodinamik VTOL uçuş açısına (±1.5708 rad) kilitlendi. 4 rotor dikey itki üretmek üzere tam devirde.";
+            }
+        }
+    };
+
     // High performance render loop
     function animate() {
         requestAnimationFrame(animate);
@@ -490,9 +678,25 @@ function initOptimized3DViewer() {
         // Only do work if visible on screen
         if (!isVisibleOnScreen) return;
 
-        rotors.forEach(r => {
-            r.rotation.y += 0.22;
-        });
+        // Smoothly interpolate all 8 joints to their exact target angles
+        const targets = MODE_TARGETS[activeMode];
+        if (targets && robot && robot.setJointValue) {
+            for (const jName in targets) {
+                const target = targets[jName];
+                currentJoints[jName] += (target - currentJoints[jName]) * 0.08;
+                robot.setJointValue(jName, currentJoints[jName]);
+            }
+        }
+
+        // Spin URDF quadcopter propellers in opposite directions
+        currentPropSpeed += (targetPropSpeed - currentPropSpeed) * 0.08;
+        if (robot && robot.setJointValue && currentPropSpeed > 0.001) {
+            propAngle += currentPropSpeed;
+            robot.setJointValue('sol_on_pervane_joint', propAngle);
+            robot.setJointValue('sol_arka_pervane_joint', -propAngle);
+            robot.setJointValue('sag_on_pervane_joint', -propAngle);
+            robot.setJointValue('sag_arka_pervane_joint', propAngle);
+        }
 
         if (autoRotate) {
             modelGroup.rotation.y += 0.004;
