@@ -385,7 +385,7 @@ function initOptimized3DViewer() {
     scene.add(modelGroup);
 
     let robot = null;
-    let autoRotate = true;
+    let autoRotate = false;
     let isWireframe = false;
     let isVisibleOnScreen = true;
     let propAngle = 0;
@@ -622,9 +622,55 @@ function initOptimized3DViewer() {
         sag_arka_air_mode: 0.0
     };
 
-    let activeMode = "default_mode";
+    let currentMode = "default_mode";
+    let stepTargetMode = "default_mode";
+    let pendingSteps = [];
     let currentPropSpeed = 0.0;
     let targetPropSpeed = 0.0;
+    let startPropSpeed = 0.0;
+
+    // Transition timing (2.0 seconds per stage with smooth robotic cubic easing)
+    const STEP_DURATION = 2000; // 2.0 seconds per step
+    let transitionStartTime = 0;
+    let isTransitioning = false;
+    let startJoints = { ...currentJoints };
+    let targetJoints = { ...MODE_TARGETS.default_mode };
+
+    function startNextTransitionStep() {
+        if (pendingSteps.length === 0) {
+            isTransitioning = false;
+            return;
+        }
+
+        stepTargetMode = pendingSteps.shift();
+        transitionStartTime = performance.now();
+        isTransitioning = true;
+        startJoints = { ...currentJoints };
+        targetJoints = { ...MODE_TARGETS[stepTargetMode] };
+        startPropSpeed = currentPropSpeed;
+
+        if (stepTargetMode === "air_mode") {
+            targetPropSpeed = 0.35; // flight rpm
+        } else {
+            targetPropSpeed = 0.0;  // rotors off in ground/park mode
+        }
+
+        // Update mode description in simulator panel to show current active phase
+        const modeTitle = document.getElementById("mode-title");
+        const modeDesc = document.getElementById("mode-desc");
+        if (modeTitle && modeDesc) {
+            if (stepTargetMode === "default_mode") {
+                modeTitle.textContent = "DEFAULT / PARK MODU (SIM)";
+                modeDesc.textContent = "Sistem nominal bekleme durumunda. Tüm eklem açıları 0.0 radyan nominal referans pozisyonunda kilitli.";
+            } else if (stepTargetMode === "ground_mode") {
+                modeTitle.textContent = "KARA SÜRÜŞ DİNAMİĞİ (SIM)";
+                modeDesc.textContent = "Tekerlek bacakları 90° (±1.5708 rad) sürüş geometrisine açıldı. 4 tekerlek diferansiyel zemin çekişi simüle edilmektedir.";
+            } else if (stepTargetMode === "air_mode") {
+                modeTitle.textContent = "VTOL UÇUŞ DİNAMİĞİ (SIM)";
+                modeDesc.textContent = "Kollar aerodinamik VTOL uçuş açısına (±1.5708 rad) kilitlendi. 4 rotor dikey itki üretmek üzere tam devirde.";
+            }
+        }
+    }
 
     window.setRobotMorphMode = function(mode) {
         // Alias handling
@@ -633,42 +679,40 @@ function initOptimized3DViewer() {
         if (mode === "default") mode = "default_mode";
 
         if (!MODE_TARGETS[mode]) return;
-        activeMode = mode;
+        const requestedMode = mode;
 
-        if (mode === "air_mode") {
-            targetPropSpeed = 0.35; // flight rpm
-        } else {
-            targetPropSpeed = 0.0;  // rotors off in ground/park mode
-        }
-
-        // Synchronize 3D viewer toggle buttons
-        if (btnModeDefault) btnModeDefault.classList.toggle("active", mode === "default_mode");
-        if (btnModeGround) btnModeGround.classList.toggle("active", mode === "ground_mode");
-        if (btnModeAir) btnModeAir.classList.toggle("active", mode === "air_mode");
+        // Synchronize 3D viewer toggle buttons immediately to target requested mode
+        if (btnModeDefault) btnModeDefault.classList.toggle("active", requestedMode === "default_mode");
+        if (btnModeGround) btnModeGround.classList.toggle("active", requestedMode === "ground_mode");
+        if (btnModeAir) btnModeAir.classList.toggle("active", requestedMode === "air_mode");
 
         // Synchronize simulator buttons below card if present
         document.querySelectorAll(".em-sim-btn").forEach(btn => {
             let bMode = btn.getAttribute("data-mode");
             if (bMode === "land") bMode = "ground_mode";
             if (bMode === "air") bMode = "air_mode";
-            btn.classList.toggle("active", bMode === mode);
+            btn.classList.toggle("active", bMode === requestedMode);
         });
 
-        // Update mode description in simulator panel
-        const modeTitle = document.getElementById("mode-title");
-        const modeDesc = document.getElementById("mode-desc");
-        if (modeTitle && modeDesc) {
-            if (mode === "default_mode") {
-                modeTitle.textContent = "DEFAULT / PARK MODU (SIM)";
-                modeDesc.textContent = "Sistem nominal bekleme durumunda. Tüm eklem açıları 0.0 radyan nominal referans pozisyonunda kilitli.";
-            } else if (mode === "ground_mode") {
-                modeTitle.textContent = "KARA SÜRÜŞ DİNAMİĞİ (SIM)";
-                modeDesc.textContent = "Tekerlek bacakları 90° (±1.5708 rad) sürüş geometrisine açıldı. 4 tekerlek diferansiyel zemin çekişi simüle edilmektedir.";
-            } else if (mode === "air_mode") {
-                modeTitle.textContent = "VTOL UÇUŞ DİNAMİĞİ (SIM)";
-                modeDesc.textContent = "Kollar aerodinamik VTOL uçuş açısına (±1.5708 rad) kilitlendi. 4 rotor dikey itki üretmek üzere tam devirde.";
-            }
+        // Current base mode (where the robot is or where it was heading)
+        const fromMode = isTransitioning ? stepTargetMode : currentMode;
+        if (fromMode === requestedMode && !isTransitioning) return;
+
+        // Build sequential queue: Default <-> Ground <-> Air
+        let sequence = [];
+        if (fromMode === "default_mode" && requestedMode === "air_mode") {
+            // Must transition through ground_mode first!
+            sequence = ["ground_mode", "air_mode"];
+        } else if (fromMode === "air_mode" && requestedMode === "default_mode") {
+            // Must transition through ground_mode first!
+            sequence = ["ground_mode", "default_mode"];
+        } else {
+            // Direct 1-step transition (default <-> ground or ground <-> air)
+            sequence = [requestedMode];
         }
+
+        pendingSteps = sequence;
+        startNextTransitionStep();
     };
 
     // High performance render loop
@@ -678,19 +722,50 @@ function initOptimized3DViewer() {
         // Only do work if visible on screen
         if (!isVisibleOnScreen) return;
 
-        // Smoothly interpolate all 8 joints to their exact target angles
-        const targets = MODE_TARGETS[activeMode];
-        if (targets && robot && robot.setJointValue) {
-            for (const jName in targets) {
-                const target = targets[jName];
-                currentJoints[jName] += (target - currentJoints[jName]) * 0.08;
-                robot.setJointValue(jName, currentJoints[jName]);
+        // Smoothly interpolate all 8 joints over 2 seconds per stage using cubic ease-in-out
+        if (isTransitioning) {
+            const elapsed = performance.now() - transitionStartTime;
+            const progress = Math.min(1.0, elapsed / STEP_DURATION);
+
+            // Smooth cubic ease-in-out curve
+            const ease = progress < 0.5
+                ? 4 * progress * progress * progress
+                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+            if (robot && robot.setJointValue) {
+                for (const jName in targetJoints) {
+                    const s = startJoints[jName] !== undefined ? startJoints[jName] : 0;
+                    const e = targetJoints[jName] !== undefined ? targetJoints[jName] : 0;
+                    currentJoints[jName] = s + (e - s) * ease;
+                    robot.setJointValue(jName, currentJoints[jName]);
+                }
+            }
+
+            // Smoothly ramp propeller speed
+            currentPropSpeed = startPropSpeed + (targetPropSpeed - startPropSpeed) * ease;
+
+            if (progress >= 1.0) {
+                // Settle exact target angles
+                for (const jName in targetJoints) {
+                    currentJoints[jName] = targetJoints[jName];
+                    if (robot && robot.setJointValue) {
+                        robot.setJointValue(jName, currentJoints[jName]);
+                    }
+                }
+                currentPropSpeed = targetPropSpeed;
+                currentMode = stepTargetMode;
+
+                // If another step is queued (e.g. Ground -> Air), execute it!
+                if (pendingSteps.length > 0) {
+                    startNextTransitionStep();
+                } else {
+                    isTransitioning = false;
+                }
             }
         }
 
         // Spin URDF quadcopter propellers in opposite directions
-        currentPropSpeed += (targetPropSpeed - currentPropSpeed) * 0.08;
-        if (robot && robot.setJointValue && currentPropSpeed > 0.001) {
+        if (robot && robot.setJointValue && currentPropSpeed > 0.0001) {
             propAngle += currentPropSpeed;
             robot.setJointValue('sol_on_pervane_joint', propAngle);
             robot.setJointValue('sol_arka_pervane_joint', -propAngle);
