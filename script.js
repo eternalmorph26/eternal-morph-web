@@ -3,7 +3,259 @@
    High-Performance & Buttery Smooth Version (60+ FPS Optimized)
    ========================================================================== */
 
+const I18N_TR = {
+    "meta.home.title": "Eternal-Morph | Multidisipliner Mühendislik & Robotik Laboratuvarı",
+    "meta.info.title": "Ekip Hakkında & Mühendislik Vizyonu | Eternal-Morph",
+    "meta.projects.title": "Projelerimiz & Ar-Ge Portföyü | Eternal-Morph",
+    "meta.contact.title": "İletişim & Ekibe Katıl | Eternal-Morph",
+    "nav.status": "1. AŞAMA: SİMÜLASYON & AR-GE",
+    "nav.home": "<i class=\"fa-solid fa-house\"></i> Ana Sayfa",
+    "nav.info": "<i class=\"fa-solid fa-circle-info\"></i> Bilgi & Vizyon",
+    "nav.projects": "<i class=\"fa-solid fa-diagram-project\"></i> Projelerimiz",
+    "nav.contact": "<i class=\"fa-solid fa-paper-plane\"></i> İletişim / Katıl",
+    "nav.github": "<i class=\"fa-brands fa-github\"></i> GitHub Reposu",
+    "home.hero.tag": "<i class=\"fa-solid fa-cubes-stacked\"></i> MULTİDİSİPLİNER MÜHENDİSLİK AR-GE SİSTEMLERİ",
+    "home.hero.title": "Teoriden Gerçeğe <br><span class=\"em-gradient-text\">İleri Robotik ve Sanal İkiz</span>",
+    "home.hero.subtitle": "<strong>Eternal-Morph</strong>; Makine, Elektrik-Elektronik ve Yazılım Mühendisliği disiplinlerini tek bir çatı altında birleştiren bağımsız bir inovasyon ekibidir. Tasarımlarımızı <strong>SolidWorks ve Fusion 360</strong> ortamında modelleyip, <strong>Gazebo ve Isaac Sim</strong> üzerinde dijital ikiz simülasyonlarıyla kusursuz şekilde doğruluyoruz.",
+    "home.hero.btnGithub": "<i class=\"fa-brands fa-github\"></i> GitHub Organizasyonumuz",
+    "home.hero.btnMethod": "<i class=\"fa-solid fa-compass\"></i> Mühendislik Metodolojimiz",
+    "home.telem.hz": "ROS 2 FREKANS",
+    "home.telem.latency": "SIM STEP GECİKME",
+    "home.tech.title": "<i class=\"fa-solid fa-layer-group\"></i> TEKNOLOJİK ALTYAPI:",
+    "home.stats.phaseLabel": "Aktif Simülasyon & Doğrulama Evresi",
+    "home.stats.discLabel": "Makine, Donanım ve Yazılım Mühendisliği",
+    "home.stats.twinLabel": "Sanal İkiz (Digital Twin) Ön Doğrulama",
+    "home.stats.projLabel": "Açık Kaynak Geliştirilen Platform",
+    "home.video.sub": "<i class=\"fa-solid fa-film\"></i> KOLEKTİF TANITIM VİDEOSU",
+    "home.video.title": "Eternal-Morph Tanıtım Filmi",
+    "home.video.desc": "Multidisipliner mühendislik vizyonumuzu, Sanal İkiz iş akışımızı ve amiral gemisi robotik platformlarımızı yakından keşfedin.",
+    "home.video.tag": "<i class=\"fa-solid fa-play\"></i> Resmi Tanıtım Filmi",
+    "home.video.cardTitle": "ETERNAL-MORPH KOLEKTİF & ROBOTİK TANITIMI",
+    "home.video.footerLeft": "<i class=\"fa-solid fa-clapperboard\"></i> HD Tanıtım &bull; SolidWorks, Gazebo &amp; ROS 2 Süreci",
+    "home.video.footerRight": "<i class=\"fa-solid fa-bolt\"></i> 1. Aşama: Simülasyon &amp; Sanal İkiz",
+    "home.cad.sub": "<i class=\"fa-solid fa-cube\"></i> INTERACTIVE 3D CAD ENGINE",
+    "home.cad.title": "Canlı 3D Sanal İkiz CAD İnceleme",
+    "home.cad.desc": "Geliştirdiğimiz mekanik modelleri tarayıcınız üzerinden gerçek zamanlı 360° döndürebilir, tel kafes (wireframe) veya katı model olarak inceleyebilirsiniz.",
+    "home.cad.modelTitle": "MORPHOROBOT 3D PARAMETRİK CAD MODELİ",
+    "home.cad.modeDefault": "<i class=\"fa-solid fa-power-off\"></i> Default",
+    "home.cad.modeGround": "<i class=\"fa-solid fa-car-side\"></i> Kara Modu",
+    "home.cad.modeAir": "<i class=\"fa-solid fa-plane-up\"></i> VTOL Uçuş",
+    "home.cad.solid": "<i class=\"fa-solid fa-cube\"></i> Katı Model",
+    "home.cad.wireframe": "<i class=\"fa-solid fa-border-none\"></i> Tel Kafes",
+    "home.cad.rotate": "<i class=\"fa-solid fa-rotate\"></i> 360° Döndür",
+    "home.cad.footerControls": "<i class=\"fa-solid fa-hand-pointer\"></i> Sol tık: Döndür &bull; Sağ tık: Kaydır &bull; Tekerlek: Yakınlaştır",
+    "home.vision.sub": "<i class=\"fa-solid fa-microchip\"></i> MÜHENDİSLİK METODOLOJİSİ & ÇALIŞMA KÜLTÜRÜ",
+    "home.vision.title": "Uçtan Uca Entegre Mühendislik ve Sanal İkiz Yaklaşımı",
+    "home.vision.desc": "Mekanik, gömülü donanım ve otonom yazılım katmanlarını geleneksel izole silolardan çıkarıp; tam entegre bir Ar-Ge ve simülasyon döngüsünde birleştiriyoruz.",
+    "home.vision.c1Step": "01 / EŞZAMANLI DÖNGÜ",
+    "home.vision.c1Title": "Disiplinlerarası Entegre Tasarım",
+    "home.vision.c1Desc": "Mekanik CAD modelleme, gömülü PCB tasarımı ve ROS2 yazılım mimarisi birbirinden bağımsız aşamalar olarak değil; ilk günden itibaren ortak arayüz standartları (URDF, CAN-Bus, ISO flanşları) üzerinden eşzamanlı geliştirilir.",
+    "home.vision.c1P1": "<i class=\"fa-solid fa-check\"></i> Sıfır Entegrasyon Uyuşmazlığı",
+    "home.vision.c1P2": "<i class=\"fa-solid fa-check\"></i> Eşzamanlı CAD-PCB-Firmware Tasarımı",
+    "home.vision.c1P3": "<i class=\"fa-solid fa-check\"></i> Sistem Seviyesinde Ön Doğrulama",
+    "home.vision.c2Step": "02 / MODEL-BASED SIM",
+    "home.vision.c2Title": "Model Tabanlı Sanal İkiz Doğrulaması",
+    "home.vision.c2Desc": "Fiziksel üretim maliyet ve risklerini minimize etmek adına; kütle tensörleri, aerodinamik sürüklenme katsayıları ve eklem torkları Gazebo & Isaac Sim ortamlarında yüksek hassasiyetli matematiksel fizik motorlarıyla doğrulanır.",
+    "home.vision.c2P1": "<i class=\"fa-solid fa-check\"></i> Gazebo & Isaac Sim Dinamik Doğrulama",
+    "home.vision.c2P2": "<i class=\"fa-solid fa-check\"></i> ANSYS FEA/CFD Akış ve Gerilme Analizi",
+    "home.vision.c2P3": "<i class=\"fa-solid fa-check\"></i> Parametrik URDF & Xacro Ağacı",
+    "home.vision.c3Step": "03 / RAPID HARDWARE",
+    "home.vision.c3Title": "HIL Co-Simulation & Hızlı Prototipleme",
+    "home.vision.c3Desc": "Simülasyonda doğrulanan matematiksel modeller; STM32 gömülü kontrol kartları, CAN-Bus telemetri hatları ve CNC işlenmiş kompozit gövdelerle donanım-sanal ikiz döngüsünde (HIL) test edilerek sahaya hazırlanır.",
+    "home.vision.c3P1": "<i class=\"fa-solid fa-check\"></i> STM32 & CAN-Bus Gerçek Zamanlı Test",
+    "home.vision.c3P2": "<i class=\"fa-solid fa-check\"></i> HIL (Hardware-in-the-Loop) Döngüsü",
+    "home.vision.c3P3": "<i class=\"fa-solid fa-check\"></i> Açık Kaynak CAD & ROS2 Paketleri",
+    "home.arch.sub": "<i class=\"fa-solid fa-sitemap\"></i> DİSİPLİNLERARASI ENTEGRASYON",
+    "home.arch.title": "Proje Sistem Mimarimiz",
+    "home.arch.desc": "Makine, donanım ve yazılım katmanlarımızın bir projeyi adım adım nasıl hayata geçirdiğini inceleyin.",
+    "home.arch.tabMech": "<i class=\"fa-solid fa-compass-drafting\"></i> 1. Makine & CAD Katmanı",
+    "home.arch.tabElec": "<i class=\"fa-solid fa-microchip\"></i> 2. Donanım & Elektronik Katmanı",
+    "home.arch.tabSoft": "<i class=\"fa-solid fa-code\"></i> 3. Yazılım & Otonomi Katmanı",
+    "home.matrix.sub": "<i class=\"fa-solid fa-table-cells\"></i> TEKNİK SPESİFİKASYONLAR",
+    "home.matrix.title": "Platform Parametre Matrisi",
+    "home.matrix.desc": "Geliştirilen platformların 1. Aşama simülasyon nitelikleri ve donanım mimarisi.",
+    "home.matrix.colParam": "MÜHENDİSLİK PARAMETRESİ",
+    "home.matrix.colMorpho": "MORPHOROBOT HİBRİT DRONE",
+    "home.matrix.colHand": "UR10 ENTEGRE BİYONİK EL",
+    "home.matrix.r1Label": "<i class=\"fa-solid fa-cube t-cyan\"></i> CAD & Modelleme Altyapısı",
+    "home.matrix.r2Label": "<i class=\"fa-solid fa-sliders t-cyan\"></i> 1. Aşama Simülasyon Motoru",
+    "home.matrix.r3Label": "<i class=\"fa-solid fa-network-wired t-cyan\"></i> Haberleşme Protokolü",
+    "home.matrix.r3Morpho": "CAN-Bus 2.0B / UART Telemetri",
+    "home.matrix.r3Hand": "URScript / ISO 9409-1 Standart Flanş",
+    "home.matrix.r4Label": "<i class=\"fa-solid fa-microchip t-cyan\"></i> Gömülü İşlemci Mimarisi",
+    "home.matrix.r5Label": "<i class=\"fa-solid fa-shield-halved t-cyan\"></i> Geliştirme Durumu",
+    "home.matrix.r5Morpho": "1. Aşama Simülasyon (GitHub)",
+    "home.matrix.r5Hand": "1. Aşama Kinematik (GitHub)",
+    "home.proj.sub": "<i class=\"fa-solid fa-diagram-project\"></i> MÜHENDİSLİK PORTFÖYÜMÜZ",
+    "home.proj.title": "Amiral Gemisi Projelerimiz",
+    "home.proj.desc": "1. Aşama simülasyon ve sanal ikiz testleri yürütülen açık kaynak projelerimiz.",
+    "proj.morpho.badge": "<i class=\"fa-solid fa-car-side\"></i> &bull; <i class=\"fa-solid fa-plane-up\"></i> Çok Modlu Hibrit Platform",
+    "proj.morpho.overlay": "<i class=\"fa-solid fa-cube\"></i> 1. Aşama: Simülasyon Evresi",
+    "proj.morpho.summary": "Döner kanatlı VTOL uçuş ile 4 tekerlekli yüksek torklu arazi sürüşünü tek şaside birleştiren hibrit robot platformumuz. SolidWorks CAD modeli Gazebo ortamında aerodinamik ve zemin çekiş testlerinden geçmektedir.",
+    "proj.morpho.simHeader": "<i class=\"fa-solid fa-sliders\"></i> Digital Twin Dinamik Mod Değiştirici:",
+    "proj.morpho.simDefault": "<i class=\"fa-solid fa-power-off\"></i> Default / Park (Sim)",
+    "proj.morpho.simGround": "<i class=\"fa-solid fa-car-side\"></i> Kara Sürüşü (Sim)",
+    "proj.morpho.simAir": "<i class=\"fa-solid fa-plane-up\"></i> VTOL Uçuş (Sim)",
+    "proj.morpho.f1Title": "Parametrik CAD & URDF:",
+    "proj.morpho.f1Desc": "SolidWorks / Fusion 360 kütle ve eylemsizlik matrisleri",
+    "proj.morpho.f2Title": "Gömülü Donanım:",
+    "proj.morpho.f2Desc": "STM32H7 mikrodenetleyici ve CAN-Bus sürücü mimarisi",
+    "proj.morpho.f3Title": "Simülasyon & Kontrol:",
+    "proj.morpho.f3Desc": "ROS 2 Humble düğümleri ve VTOL mod geçiş kontrolcüleri",
+    "proj.morpho.btnGithub": "<i class=\"fa-brands fa-github\"></i> Morphorobot GitHub Reposuna Git",
+    "proj.morpho.btnReport": "<i class=\"fa-solid fa-circle-info\"></i> Simülasyon Raporunu İncele",
+    "proj.hand.badge": "<i class=\"fa-solid fa-hand\"></i> Biyonik & Mekatronik Sistem",
+    "proj.hand.overlay": "<i class=\"fa-solid fa-cube\"></i> 1. Aşama: Kinematik Simülasyon",
+    "proj.hand.title": "UR10 BİYONİK ROBOT EL",
+    "proj.hand.summary": "Universal Robots UR10 endüstriyel robot koluyla tam uyumlu, insan eli anatomisine sadık 5 parmaklı biyonik robotik el projemiz. Parametrik parmak kinematiği MoveIt 2 ve ROS 2 ortamında doğrulanmaktadır.",
+    "proj.hand.c1": "<i class=\"fa-solid fa-check\"></i> MoveIt 2 Yörünge Planlama",
+    "proj.hand.c2": "<i class=\"fa-solid fa-check\"></i> 15 DoF Parmak Kinematiği",
+    "proj.hand.c4": "<i class=\"fa-solid fa-check\"></i> STM32 Gerçek Zamanlı Kontrol",
+    "proj.hand.btnGithub": "<i class=\"fa-brands fa-github\"></i> Robot El GitHub Reposuna Git",
+    "proj.hand.btnReport": "<i class=\"fa-solid fa-circle-info\"></i> Kinematik Raporunu İncele",
+    "home.githubBanner.title": "Açık Kaynak Mühendislik Ekosistemimiz",
+    "home.githubBanner.desc": "Eternal-Morph projelerine ait tüm SolidWorks/Fusion 360 CAD dosyaları, ROS 2 paketleri ve URDF simülasyon modelleri GitHub organizasyonumuzda açık kaynak olarak yayınlanmaktadır.",
+    "home.githubBanner.btn": "<i class=\"fa-brands fa-github\"></i> GitHub'da Yıldızla",
+    "home.join.sub": "<i class=\"fa-solid fa-user-plus\"></i> EKİBİMİZE KATILIN",
+    "home.join.title": "Geleceğin İleri Mühendislik Sistemlerini Birlikte Üretelim",
+    "home.join.desc": "Makine, Elektrik-Elektronik veya Yazılım Mühendisliği alanında tutkuluysan; teorik bilgilerini <strong>SolidWorks / Fusion 360 CAD modelleri</strong>, <strong>Gazebo simülasyonları</strong> ve <strong>sanal ikiz mimarisi</strong> üzerinde geliştirmek istiyorsan ekibimize başvurabilirsin!",
+    "home.join.btnApply": "<i class=\"fa-solid fa-paper-plane\"></i> Ekibe Katıl / Başvur",
+    "home.join.btnRepos": "<i class=\"fa-brands fa-github\"></i> Repoları İncele",
+    "info.hero.title": "Ekip Hakkında & <span class=\"em-gradient-text\">Mühendislik Vizyonu</span>",
+    "info.hero.subtitle": "Eternal-Morph; Makine, Elektrik-Elektronik ve Yazılım Mühendisliği alanındaki yetenekleri birleştirerek sanal ikiz (Digital Twin) ve simülasyon tabanlı ileri Ar-Ge sistemleri geliştiren bağımsız bir inovasyon kolektifidir.",
+    "info.pipe.sub": "<i class=\"fa-solid fa-diagram-next\"></i> GELİŞTİRME PİPELİNE",
+    "info.pipe.title": "3 Aşamalı Prototipleme Süreci",
+    "info.pipe.desc": "Sanal ortamdan fiziksel üretime uzanan doğrulanabilir mühendislik yol haritamız.",
+    "info.pipe.s1Title": "Sanal İkiz & Simülasyon (Aktif)",
+    "info.pipe.s1Desc": "SolidWorks / Fusion 360 CAD modelleri URDF/Xacro formatına aktarılarak Gazebo veya Isaac Sim ortamında kütle, aerodinamik ve eklem fiziği detaylıca benzetimden geçirilir.",
+    "info.pipe.s1Tag": "Şu Anki Aktif Aşama",
+    "info.pipe.s2Title": "HIL Co-Simulation (Hedeflenen)",
+    "info.pipe.s2Desc": "Tasarladığımız STM32 kontrol kartları, CAN-Bus/UART veri hattı üzerinden simülasyon sunucusuna bağlanır. Gerçek zamanlı donanım ile sanal ikiz aynı anda haberleşir.",
+    "info.pipe.s2Tag": "Gelecek 2. Aşama",
+    "info.pipe.s3Title": "Fiziksel Prototipleme & Test",
+    "info.pipe.s3Desc": "Simülasyonda doğrulanan tasarımların CNC işleme, 3D baskı, Karbon Fiber serim ve özel PCB imalatı tamamlanarak sahada fiziksel testleri gerçekleştirilir.",
+    "info.pipe.s3Tag": "Nihai Saha Evresi",
+    "projPage.hero.title": "Projelerimiz & <span class=\"em-gradient-text\">Ar-Ge Portföyümüz</span>",
+    "projPage.hero.subtitle": "1. Aşama simülasyon ve sanal ikiz (Digital Twin) ortamında kütle, kinematik ve aerodinamik benzetimleri tamamlanan amiral gemisi robotik platformlarımız.",
+    "projPage.githubBanner.desc": "Eternal-Morph projelerine ait tüm SolidWorks & Fusion 360 CAD montajları, ROS 2 paketleri, URDF modelleri ve gömülü yazılım kaynak kodları GitHub organizasyonumuzda açık kaynak olarak yayınlanmaktadır.",
+    "projPage.githubBanner.btn": "<i class=\"fa-brands fa-github\"></i> GitHub Repolarını İncele",
+    "contact.hero.title": "İletişim & <span class=\"em-gradient-text\">Ekibe Katılım</span>",
+    "contact.hero.subtitle": "Projelerimize katılmak, yeni bir robotik fikir önermek veya iş birliği ve sponsorluk talebinde bulunmak için doğrudan bize ulaşın.",
+    "contact.info.sub": "<i class=\"fa-solid fa-id-card\"></i> İLETİŞİM KANALLARI",
+    "contact.info.title": "Bizimle İletişime Geçin",
+    "contact.info.desc": "Eternal-Morph ekibi bağımsız bir mühendislik kolektifidir. Üniversite öğrencileri, araştırmacılar ve sanayi ortaklarıyla iş birliğine açığız.",
+    "contact.info.emailLabel": "DOĞRUDAN E-POSTA",
+    "contact.info.githubLabel": "GITHUB ORGANİZASYONU",
+    "contact.info.locLabel": "KONUM",
+    "contact.info.locVal": "Türkiye (Uzaktan / Hibrit Ar-Ge)",
+    "contact.form.sub": "<i class=\"fa-solid fa-paper-plane\"></i> MESAJ GÖNDERİN",
+    "contact.form.title": "Başvuru & İletişim Formu",
+    "contact.form.nameLabel": "Adınız Soyadınız / Kurum",
+    "contact.form.namePh": "Örn: Ahmet Yılmaz",
+    "contact.form.deptLabel": "Bölümünüz / Uzmanlık Alanınız",
+    "contact.form.deptPh": "Örn: Makine Mühendisliği (3. Sınıf)",
+    "contact.form.emailLabel": "E-posta Adresiniz",
+    "contact.form.emailPh": "ahmet@ornek.com",
+    "contact.form.subjectLabel": "Konu",
+    "contact.form.subjectVal": "Eternal-Morph Ekip Başvurusu / İletişim",
+    "contact.form.msgLabel": "Mesajınız / Başvuru Detayınız",
+    "contact.form.msgPh": "Kendinizden, ilgi duyduğunuz disiplinden ve tecrübelerinizden bahsedin...",
+    "contact.form.submit": "<i class=\"fa-solid fa-paper-plane\"></i> Mesajı Gönder (eternalmorph26@gmail.com)",
+    "footer.subtitle": "Multidisipliner Mühendislik & Robotik Laboratuvarı",
+    "footer.home": "Ana Sayfa",
+    "footer.info": "Bilgi & Vizyon",
+    "footer.projects": "Projelerimiz",
+    "footer.contact": "İletişim",
+    "footer.copy": "© 2026 Eternal-Morph Multidisipliner Mühendislik Proje Ekibi. Tüm Hakları Saklıdır."
+};
+
+const I18N_EN = {};
+let currentEmLang = "en";
+const emLangListeners = [];
+
+window.getEmLang = function () {
+    return currentEmLang;
+};
+
+window.onEmLangChange = function (fn) {
+    if (typeof fn === "function") emLangListeners.push(fn);
+};
+
+window.setEmLang = function (lang) {
+    const normalized = lang === "tr" ? "tr" : "en";
+    currentEmLang = normalized;
+    try {
+        localStorage.setItem("em_lang", normalized);
+    } catch (e) {}
+
+    document.documentElement.lang = normalized;
+
+    document.querySelectorAll(".em-lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === normalized);
+    });
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (I18N_EN[key] === undefined) I18N_EN[key] = el.textContent;
+        const val = normalized === "tr" ? (I18N_TR[key] ?? I18N_EN[key]) : I18N_EN[key];
+        if (el.tagName === "TITLE") {
+            document.title = val;
+        } else {
+            el.textContent = val;
+        }
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach(el => {
+        const key = el.getAttribute("data-i18n-html");
+        if (I18N_EN[key] === undefined) I18N_EN[key] = el.innerHTML;
+        el.innerHTML = normalized === "tr" ? (I18N_TR[key] ?? I18N_EN[key]) : I18N_EN[key];
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (I18N_EN[key] === undefined) I18N_EN[key] = el.getAttribute("placeholder") || "";
+        el.setAttribute("placeholder", normalized === "tr" ? (I18N_TR[key] ?? I18N_EN[key]) : I18N_EN[key]);
+    });
+
+    document.querySelectorAll("[data-i18n-value]").forEach(el => {
+        const key = el.getAttribute("data-i18n-value");
+        if (I18N_EN[key] === undefined) I18N_EN[key] = el.value;
+        el.value = normalized === "tr" ? (I18N_TR[key] ?? I18N_EN[key]) : I18N_EN[key];
+    });
+
+    document.querySelectorAll(".em-stat-number").forEach(stat => {
+        const suffixAttr = normalized === "tr" ? "data-suffix-tr" : "data-suffix-en";
+        const newSuffix = stat.getAttribute(suffixAttr);
+        if (newSuffix !== null) {
+            stat.setAttribute("data-suffix", newSuffix);
+            if (stat.dataset.animatedDone === "1") {
+                stat.textContent = stat.getAttribute("data-target") + newSuffix;
+            }
+        }
+    });
+
+    emLangListeners.forEach(fn => {
+        try { fn(normalized); } catch (e) {}
+    });
+};
+
+function initI18n() {
+    let saved = "en";
+    try {
+        saved = localStorage.getItem("em_lang") || "en";
+    } catch (e) {}
+
+    document.querySelectorAll(".em-lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            window.setEmLang(btn.getAttribute("data-lang"));
+        });
+    });
+
+    window.setEmLang(saved);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    initI18n();
     initHeaderScroll();
     initMobileMenu();
     initModeSimulator();
@@ -14,8 +266,56 @@ document.addEventListener("DOMContentLoaded", () => {
     initTerminalLogStream();
     initArchitectureExplorer();
     initLiveTelemetryTicker();
+    initPromoVideo();
     initOptimized3DViewer();
 });
+
+function initPromoVideo() {
+    const video = document.getElementById("em-promo-video");
+    const muteBtn = document.getElementById("btn-video-mute");
+    if (!video) return;
+
+    function syncMuteBtn() {
+        if (!muteBtn) return;
+        const isTr = (window.getEmLang ? window.getEmLang() : "en") === "tr";
+        if (video.muted) {
+            muteBtn.classList.remove("unmuted");
+            muteBtn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i> <span>${isTr ? "Sesi Aç" : "Unmute"}</span>`;
+        } else {
+            muteBtn.classList.add("unmuted");
+            muteBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i> <span>${isTr ? "Sessize Al" : "Mute"}</span>`;
+        }
+    }
+
+    if (muteBtn) {
+        muteBtn.addEventListener("click", () => {
+            video.muted = !video.muted;
+            if (!video.muted && video.paused) {
+                video.play().catch(() => {});
+            }
+            syncMuteBtn();
+        });
+        video.addEventListener("volumechange", syncMuteBtn);
+        if (window.onEmLangChange) {
+            window.onEmLangChange(syncMuteBtn);
+        }
+        syncMuteBtn();
+    }
+
+    if (typeof IntersectionObserver !== "undefined") {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else if (!video.paused) {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.35 });
+
+        observer.observe(video);
+    }
+}
 
 /* 1. Throttled Header Scroll Effect */
 function initHeaderScroll() {
@@ -142,17 +442,79 @@ function initScrollSpyAndNavHighlight() {
     updateActiveSection();
 }
 
-/* 4. Morphorobot Mode Simulator */
+/* 4. Morphorobot Mode Simulator (works on both Home 3D and /projects/ page) */
+window.updateEmModeDisplay = function(mode) {
+    let normalized = mode;
+    if (normalized === "land") normalized = "ground_mode";
+    if (normalized === "air") normalized = "air_mode";
+    if (normalized === "default") normalized = "default_mode";
+
+    const modeTitle = document.getElementById("mode-title");
+    const modeDesc = document.getElementById("mode-desc");
+    if (!modeTitle || !modeDesc) return;
+
+    const lang = window.getEmLang ? window.getEmLang() : "en";
+    const labels = {
+        en: {
+            default_mode: {
+                title: "DEFAULT / PARK MODE (SIM)",
+                desc: "System in nominal standby state. All joint angles are locked at the 0.0 rad nominal reference position."
+            },
+            ground_mode: {
+                title: "GROUND DRIVE DYNAMICS (SIM)",
+                desc: "Wheel legs opened to 90° (±1.5708 rad) driving geometry. 4-wheel differential ground traction is being simulated."
+            },
+            air_mode: {
+                title: "VTOL FLIGHT DYNAMICS (SIM)",
+                desc: "Arms locked to aerodynamic VTOL flight angle (±1.5708 rad). All 4 rotors at full RPM for vertical thrust."
+            }
+        },
+        tr: {
+            default_mode: {
+                title: "DEFAULT / PARK MODU (SIM)",
+                desc: "Sistem nominal bekleme durumunda. Tüm eklem açıları 0.0 radyan nominal referans pozisyonunda kilitli."
+            },
+            ground_mode: {
+                title: "KARA SÜRÜŞ DİNAMİĞİ (SIM)",
+                desc: "Tekerlek bacakları 90° (±1.5708 rad) sürüş geometrisine açıldı. 4 tekerlek diferansiyel zemin çekişi simüle edilmektedir."
+            },
+            air_mode: {
+                title: "VTOL UÇUŞ DİNAMİĞİ (SIM)",
+                desc: "Kollar aerodinamik VTOL uçuş açısına (±1.5708 rad) kilitlendi. 4 rotor dikey itki üretmek üzere tam devirde."
+            }
+        }
+    };
+    const entry = (labels[lang] || labels.en)[normalized];
+    if (entry) {
+        modeTitle.textContent = entry.title;
+        modeDesc.textContent = entry.desc;
+    }
+};
+
 function initModeSimulator() {
     const simBtns = document.querySelectorAll(".em-sim-btn");
-    if (simBtns.length > 0) {
-        simBtns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const mode = btn.getAttribute("data-mode");
-                if (window.setRobotMorphMode) {
-                    window.setRobotMorphMode(mode);
-                }
-            });
+    if (!simBtns.length) return;
+
+    let activeSimMode = "default_mode";
+
+    simBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const mode = btn.getAttribute("data-mode");
+            activeSimMode = mode;
+            if (window.setRobotMorphMode) {
+                window.setRobotMorphMode(mode);
+            } else {
+                simBtns.forEach(b => b.classList.toggle("active", b === btn));
+                window.updateEmModeDisplay(mode);
+            }
+        });
+    });
+
+    if (window.onEmLangChange) {
+        window.onEmLangChange(() => {
+            if (!window.setRobotMorphMode) {
+                window.updateEmModeDisplay(activeSimMode);
+            }
         });
     }
 }
@@ -181,9 +543,11 @@ function initStatsCounter() {
                     current += increment;
                     if (current >= target) {
                         current = target;
+                        stat.dataset.animatedDone = "1";
                         clearInterval(timer);
                     }
-                    stat.textContent = current + suffix;
+                    const currentSuffix = stat.getAttribute("data-suffix") || "";
+                    stat.textContent = current + currentSuffix;
                 }, stepTime);
             });
         }
@@ -255,59 +619,104 @@ function initArchitectureExplorer() {
     if (!tabs.length || !displayBox) return;
 
     const archData = {
-        mech: {
-            badge: "<i class='fa-solid fa-compass-drafting'></i> 1. Katman: Makine & Aerodinamik Mimarisi",
-            title: "SolidWorks & Fusion 360 Parametrik CAD ve CFD",
-            desc: "Projelerimizin fiziksel şasisi, kütle merkezleri ve eklem kinematiği CAD ortamında parametrik olarak modellenir. ANSYS ile aerodinamik akış ve gerilme analizleri tamamlandıktan sonra URDF/Xacro formatında simülasyon katmanına aktarılır.",
-            highlights: [
-                "Parametrik CAD Şasi & Montaj",
-                "Aerodinamik CFD & Akış Analizleri",
-                "URDF Kütle ve Eylemsizlik Matrisleri"
-            ]
+        en: {
+            mech: {
+                badge: "<i class='fa-solid fa-compass-drafting'></i> Layer 1: Mechanical & Aerodynamic Architecture",
+                title: "SolidWorks & Fusion 360 Parametric CAD and CFD",
+                desc: "The physical chassis, centers of mass, and joint kinematics of our projects are parametrically modeled in CAD. After completing aerodynamic flow and structural stress analyses in ANSYS, models are exported to the simulation layer in URDF/Xacro format.",
+                highlights: [
+                    "Parametric CAD Chassis & Assembly",
+                    "Aerodynamic CFD & Flow Analysis",
+                    "URDF Mass & Inertia Matrices"
+                ]
+            },
+            elec: {
+                badge: "<i class='fa-solid fa-microchip'></i> Layer 2: Hardware & Embedded Systems Architecture",
+                title: "STM32 Real-Time Control & CAN-Bus Data Link",
+                desc: "Our hardware architecture leverages high-performance STM32 microcontrollers running FreeRTOS. Sensor telemetry and motor drivers communicate in real time over industrial CAN-Bus / UART protocols.",
+                highlights: [
+                    "STM32 Real-time Motor Control",
+                    "Industrial CAN-Bus Communication",
+                    "Custom Power Distribution & BMS"
+                ]
+            },
+            soft: {
+                badge: "<i class='fa-solid fa-code'></i> Layer 3: Software, Autonomy & Simulation",
+                title: "ROS 2 Humble, MoveIt2 & Gazebo Digital Twin",
+                desc: "System software runs on modular ROS 2 Humble nodes. In Gazebo and Isaac Sim, 6-DOF kinematics and path-planning algorithms are thoroughly validated before physical manufacturing.",
+                highlights: [
+                    "ROS 2 Humble Node Architecture",
+                    "MoveIt2 Kinematic Trajectory Solver",
+                    "Gazebo & Isaac Sim Physics Verification"
+                ]
+            }
         },
-        elec: {
-            badge: "<i class='fa-solid fa-microchip'></i> 2. Katman: Donanım & Gömülü Sistem Mimarisi",
-            title: "STM32 Real-Time Control & CAN-Bus Veri Hattı",
-            desc: "Donanım mimarisinde STM32 serisi yüksek performanslı mikrokontrolcüler ve FreeRTOS kullanılmaktadır. Sensör telemetrisi ve motor sürücüleri CAN-Bus / UART protokolleri üzerinden gerçek zamanlı olarak haberleşir.",
-            highlights: [
-                "STM32 Real-time Motor Kontrolü",
-                "Endüstriyel CAN-Bus İletişim Hattı",
-                "Özel Güç Dağıtım ve BMS Tasarımı"
-            ]
-        },
-        soft: {
-            badge: "<i class='fa-solid fa-code'></i> 3. Katman: Yazılım, Otonomi & Simülasyon",
-            title: "ROS 2 Humble, MoveIt2 & Gazebo Digital Twin",
-            desc: "Sistem yazılımı mikroservis mimarisine uygun ROS 2 Humble düğümleri üzerinde koşar. Gazebo ve Isaac Sim ortamlarında robotun 6-DOF kinematiği ve yol planlama algoritmaları fiziksel üretim öncesi doğrulanır.",
-            highlights: [
-                "ROS 2 Humble Düğüm Mimarisi",
-                "MoveIt2 Kinematik Yörünge Çözücü",
-                "Gazebo & Isaac Sim Fizik Doğrulaması"
-            ]
+        tr: {
+            mech: {
+                badge: "<i class='fa-solid fa-compass-drafting'></i> 1. Katman: Makine & Aerodinamik Mimarisi",
+                title: "SolidWorks & Fusion 360 Parametrik CAD ve CFD",
+                desc: "Projelerimizin fiziksel şasisi, kütle merkezleri ve eklem kinematiği CAD ortamında parametrik olarak modellenir. ANSYS ile aerodinamik akış ve gerilme analizleri tamamlandıktan sonra URDF/Xacro formatında simülasyon katmanına aktarılır.",
+                highlights: [
+                    "Parametrik CAD Şasi & Montaj",
+                    "Aerodinamik CFD & Akış Analizleri",
+                    "URDF Kütle ve Eylemsizlik Matrisleri"
+                ]
+            },
+            elec: {
+                badge: "<i class='fa-solid fa-microchip'></i> 2. Katman: Donanım & Gömülü Sistem Mimarisi",
+                title: "STM32 Real-Time Control & CAN-Bus Veri Hattı",
+                desc: "Donanım mimarisinde STM32 serisi yüksek performanslı mikrokontrolcüler ve FreeRTOS kullanılmaktadır. Sensör telemetrisi ve motor sürücüleri CAN-Bus / UART protokolleri üzerinden gerçek zamanlı olarak haberleşir.",
+                highlights: [
+                    "STM32 Real-time Motor Kontrolü",
+                    "Endüstriyel CAN-Bus İletişim Hattı",
+                    "Özel Güç Dağıtım ve BMS Tasarımı"
+                ]
+            },
+            soft: {
+                badge: "<i class='fa-solid fa-code'></i> 3. Katman: Yazılım, Otonomi & Simülasyon",
+                title: "ROS 2 Humble, MoveIt2 & Gazebo Digital Twin",
+                desc: "Sistem yazılımı mikroservis mimarisine uygun ROS 2 Humble düğümleri üzerinde koşar. Gazebo ve Isaac Sim ortamlarında robotun 6-DOF kinematiği ve yol planlama algoritmaları fiziksel üretim öncesi doğrulanır.",
+                highlights: [
+                    "ROS 2 Humble Düğüm Mimarisi",
+                    "MoveIt2 Kinematik Yörünge Çözücü",
+                    "Gazebo & Isaac Sim Fizik Doğrulaması"
+                ]
+            }
         }
     };
+
+    let activeArchKey = "mech";
+
+    function renderArch(archKey) {
+        const lang = window.getEmLang ? window.getEmLang() : "en";
+        const data = (archData[lang] || archData.en)[archKey];
+        if (!data) return;
+
+        displayBox.innerHTML = `
+            <div class="em-arch-info">
+                <div class="em-arch-badge">${data.badge}</div>
+                <h3>${data.title}</h3>
+                <p>${data.desc}</p>
+                <div class="em-arch-highlights-list">
+                    ${data.highlights.map(h => `<span><i class="fa-solid fa-check"></i> ${h}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             tabs.forEach(t => t.classList.remove("active"));
             tab.classList.add("active");
-
-            const archKey = tab.getAttribute("data-arch");
-            const data = archData[archKey];
-            if (!data) return;
-
-            displayBox.innerHTML = `
-                <div class="em-arch-info">
-                    <div class="em-arch-badge">${data.badge}</div>
-                    <h3>${data.title}</h3>
-                    <p>${data.desc}</p>
-                    <div class="em-arch-highlights-list">
-                        ${data.highlights.map(h => `<span><i class="fa-solid fa-check"></i> ${h}</span>`).join('')}
-                    </div>
-                </div>
-            `;
+            activeArchKey = tab.getAttribute("data-arch");
+            renderArch(activeArchKey);
         });
     });
+
+    if (window.onEmLangChange) {
+        window.onEmLangChange(() => renderArch(activeArchKey));
+    }
+    renderArch(activeArchKey);
 }
 
 /* 9. Live Telemetry Ticker */
@@ -335,9 +744,10 @@ function initOptimized3DViewer() {
     // Loading indicator element
     const loaderEl = document.createElement("div");
     loaderEl.className = "em-3d-loading";
+    const initLang = window.getEmLang ? window.getEmLang() : "en";
     loaderEl.innerHTML = `
         <div class="em-3d-spinner"></div>
-        <span class="em-loader-text">Morphorobot CAD & URDF Modeli Hazırlanıyor...</span>
+        <span class="em-loader-text">${initLang === "tr" ? "Morphorobot CAD & URDF Modeli Hazırlanıyor..." : "Preparing Morphorobot CAD & URDF Model..."}</span>
     `;
     container.appendChild(loaderEl);
     const loaderText = loaderEl.querySelector(".em-loader-text");
@@ -431,7 +841,8 @@ function initOptimized3DViewer() {
             loadedCount = loaded;
             if (loaderText) {
                 const pct = Math.min(100, Math.round((loaded / Math.max(total, totalMeshes)) * 100));
-                loaderText.textContent = `CAD Parçaları Yükleniyor... (%${pct})`;
+                const l = window.getEmLang ? window.getEmLang() : "en";
+                loaderText.textContent = l === "tr" ? `CAD Parçaları Yükleniyor... (%${pct})` : `Loading CAD Parts... (${pct}%)`;
             }
         };
 
@@ -656,20 +1067,55 @@ function initOptimized3DViewer() {
         }
 
         // Update mode description in simulator panel to show current active phase
+        updateModeStatusDisplay(stepTargetMode);
+    }
+
+    function updateModeStatusDisplay(mode) {
         const modeTitle = document.getElementById("mode-title");
         const modeDesc = document.getElementById("mode-desc");
-        if (modeTitle && modeDesc) {
-            if (stepTargetMode === "default_mode") {
-                modeTitle.textContent = "DEFAULT / PARK MODU (SIM)";
-                modeDesc.textContent = "Sistem nominal bekleme durumunda. Tüm eklem açıları 0.0 radyan nominal referans pozisyonunda kilitli.";
-            } else if (stepTargetMode === "ground_mode") {
-                modeTitle.textContent = "KARA SÜRÜŞ DİNAMİĞİ (SIM)";
-                modeDesc.textContent = "Tekerlek bacakları 90° (±1.5708 rad) sürüş geometrisine açıldı. 4 tekerlek diferansiyel zemin çekişi simüle edilmektedir.";
-            } else if (stepTargetMode === "air_mode") {
-                modeTitle.textContent = "VTOL UÇUŞ DİNAMİĞİ (SIM)";
-                modeDesc.textContent = "Kollar aerodinamik VTOL uçuş açısına (±1.5708 rad) kilitlendi. 4 rotor dikey itki üretmek üzere tam devirde.";
+        if (!modeTitle || !modeDesc) return;
+        const lang = window.getEmLang ? window.getEmLang() : "en";
+        const labels = {
+            en: {
+                default_mode: {
+                    title: "DEFAULT / PARK MODE (SIM)",
+                    desc: "System in nominal standby state. All joint angles are locked at the 0.0 rad nominal reference position."
+                },
+                ground_mode: {
+                    title: "GROUND DRIVE DYNAMICS (SIM)",
+                    desc: "Wheel legs opened to 90° (±1.5708 rad) driving geometry. 4-wheel differential ground traction is being simulated."
+                },
+                air_mode: {
+                    title: "VTOL FLIGHT DYNAMICS (SIM)",
+                    desc: "Arms locked to aerodynamic VTOL flight angle (±1.5708 rad). All 4 rotors at full RPM for vertical thrust."
+                }
+            },
+            tr: {
+                default_mode: {
+                    title: "DEFAULT / PARK MODU (SIM)",
+                    desc: "Sistem nominal bekleme durumunda. Tüm eklem açıları 0.0 radyan nominal referans pozisyonunda kilitli."
+                },
+                ground_mode: {
+                    title: "KARA SÜRÜŞ DİNAMİĞİ (SIM)",
+                    desc: "Tekerlek bacakları 90° (±1.5708 rad) sürüş geometrisine açıldı. 4 tekerlek diferansiyel zemin çekişi simüle edilmektedir."
+                },
+                air_mode: {
+                    title: "VTOL UÇUŞ DİNAMİĞİ (SIM)",
+                    desc: "Kollar aerodinamik VTOL uçuş açısına (±1.5708 rad) kilitlendi. 4 rotor dikey itki üretmek üzere tam devirde."
+                }
             }
+        };
+        const entry = (labels[lang] || labels.en)[mode];
+        if (entry) {
+            modeTitle.textContent = entry.title;
+            modeDesc.textContent = entry.desc;
         }
+    }
+
+    if (window.onEmLangChange) {
+        window.onEmLangChange(() => {
+            updateModeStatusDisplay(isTransitioning ? stepTargetMode : currentMode);
+        });
     }
 
     window.setRobotMorphMode = function(mode) {
@@ -814,9 +1260,10 @@ function initModals() {
 
     window.openProjectModal = function(projectId) {
         if (!projectModal || !modalBody) return;
+        const isTr = (window.getEmLang ? window.getEmLang() : "en") === "tr";
 
         if (projectId === "morphorobot") {
-            modalBody.innerHTML = `
+            modalBody.innerHTML = isTr ? `
                 <div style="font-family: var(--em-font-body);">
                     <div style="display:inline-flex; align-items:center; gap:8px; font-family:var(--em-font-mono); font-size:0.75rem; color:var(--em-accent); font-weight:700; background:var(--em-accent-subtle); border:1px solid var(--em-accent-border); padding:4px 10px; border-radius:9999px; margin-bottom:12px;">
                         <i class="fa-solid fa-cube"></i> SİSTEM SİMÜLASYONU & AR-GE RAPORU
@@ -858,9 +1305,51 @@ function initModals() {
                         <i class="fa-brands fa-github"></i> Morphorobot GitHub Reposunu İncele
                     </a>
                 </div>
+            ` : `
+                <div style="font-family: var(--em-font-body);">
+                    <div style="display:inline-flex; align-items:center; gap:8px; font-family:var(--em-font-mono); font-size:0.75rem; color:var(--em-accent); font-weight:700; background:var(--em-accent-subtle); border:1px solid var(--em-accent-border); padding:4px 10px; border-radius:9999px; margin-bottom:12px;">
+                        <i class="fa-solid fa-cube"></i> SYSTEM SIMULATION & R&D REPORT
+                    </div>
+                    <h2 style="font-family:var(--em-font-display); font-size:1.625rem; color:var(--em-primary); font-weight:800; margin-bottom:14px; letter-spacing:-0.02em; line-height:1.25;">
+                        Morphorobot Hybrid UAV/UGV System & Simulation Report
+                    </h2>
+                    <p style="color:var(--em-text-secondary); margin-bottom:20px; font-size:0.9375rem; line-height:1.65;">
+                        Morphorobot is a multi-modal hybrid robotic platform capable of 4-wheel independent differential ground driving while repositioning its actuator-controlled arms for vertical takeoff (VTOL) and flight dynamics.
+                    </p>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">CAD & PHYSICAL MODELING</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:var(--em-primary);">SolidWorks & Fusion 360 Parametric URDF</div>
+                        </div>
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">SIMULATION ENGINE</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:#059669;">ROS 2 Humble + Gazebo (ODE / Bullet)</div>
+                        </div>
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">EMBEDDED CONTROL UNIT</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:var(--em-primary);">STM32H7 Series ARM Cortex-M7 & CAN-Bus</div>
+                        </div>
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">CONTROL & STABILIZATION</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:#059669;">Cascaded PID Attitude/Thrust & 6-DOF EKF</div>
+                        </div>
+                    </div>
+
+                    <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border); margin-bottom:20px; font-size:0.8125rem; color:var(--em-text-secondary); line-height:1.6;">
+                        <strong style="color:var(--em-primary); display:block; margin-bottom:4px;"><i class="fa-solid fa-list-check"></i> Verification Scope:</strong>
+                        • Ground friction coefficients and slope climbing stability in Gazebo physics.<br>
+                        • Lift/drag (L/D) polar coefficients derived from ANSYS CFD flow analyses.<br>
+                        • Synchronized servo position-feedback locking mechanism during VTOL-to-ground transitions.
+                    </div>
+
+                    <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-primary em-btn-block">
+                        <i class="fa-brands fa-github"></i> Explore Morphorobot GitHub Repo
+                    </a>
+                </div>
             `;
         } else if (projectId === "robothand") {
-            modalBody.innerHTML = `
+            modalBody.innerHTML = isTr ? `
                 <div style="font-family: var(--em-font-body);">
                     <div style="display:inline-flex; align-items:center; gap:8px; font-family:var(--em-font-mono); font-size:0.75rem; color:var(--em-accent); font-weight:700; background:var(--em-accent-subtle); border:1px solid var(--em-accent-border); padding:4px 10px; border-radius:9999px; margin-bottom:12px;">
                         <i class="fa-solid fa-hand"></i> KİNEMATİK DOĞRULAMA RAPORU
@@ -902,6 +1391,48 @@ function initModals() {
                         <i class="fa-brands fa-github"></i> Robot El GitHub Reposunu İncele
                     </a>
                 </div>
+            ` : `
+                <div style="font-family: var(--em-font-body);">
+                    <div style="display:inline-flex; align-items:center; gap:8px; font-family:var(--em-font-mono); font-size:0.75rem; color:var(--em-accent); font-weight:700; background:var(--em-accent-subtle); border:1px solid var(--em-accent-border); padding:4px 10px; border-radius:9999px; margin-bottom:12px;">
+                        <i class="fa-solid fa-hand"></i> KINEMATIC VERIFICATION REPORT
+                    </div>
+                    <h2 style="font-family:var(--em-font-display); font-size:1.625rem; color:var(--em-primary); font-weight:800; margin-bottom:14px; letter-spacing:-0.02em; line-height:1.25;">
+                        UR10 Integrated Bionic Robot Hand Kinematics Report
+                    </h2>
+                    <p style="color:var(--em-text-secondary); margin-bottom:20px; font-size:0.9375rem; line-height:1.65;">
+                        Fully compatible with Universal Robots UR10/UR10e industrial arms, this 5-fingered bionic robotic hand follows human anatomy and is engineered for precision object manipulation with tendon-driven joint mechanics.
+                    </p>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">MECHANICAL INTERFACE</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:var(--em-primary);">ISO 9409-1-50-4-M6 Standard Flange</div>
+                        </div>
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">INVERSE KINEMATICS (IK)</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:#059669;">ROS 2 MoveIt 2 (KDL / IKFast)</div>
+                        </div>
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">ACTUATION MECHANISM</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:var(--em-primary);">Tendon-Driven Bionic Joints</div>
+                        </div>
+                        <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border);">
+                            <div style="font-size:0.6875rem; color:var(--em-text-muted); font-family:var(--em-font-mono); font-weight:700; margin-bottom:4px;">COMM & CONTROL</div>
+                            <div style="font-size:0.875rem; font-weight:700; color:#059669;">RS-485 / CAN-Bus & URScript Integration</div>
+                        </div>
+                    </div>
+
+                    <div style="background:var(--em-bg-subtle); padding:14px; border-radius:8px; border:1px solid var(--em-border); margin-bottom:20px; font-size:0.8125rem; color:var(--em-text-secondary); line-height:1.6;">
+                        <strong style="color:var(--em-primary); display:block; margin-bottom:4px;"><i class="fa-solid fa-list-check"></i> Kinematic & Simulation Scope:</strong>
+                        • Collision matrix verification and manipulator coordination in MoveIt 2 & RViz.<br>
+                        • Joint angle limit tests for precision Pinch Grasp and Power Grasp maneuvers.<br>
+                        • Virtual load testing with torque/current feedback over the STM32 motor driver.
+                    </div>
+
+                    <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-primary em-btn-block">
+                        <i class="fa-brands fa-github"></i> Explore Robot Hand GitHub Repo
+                    </a>
+                </div>
             `;
         }
 
@@ -909,15 +1440,74 @@ function initModals() {
     };
 }
 
-window.handleContactSubmit = function(e) {
+window.handleContactSubmit = async function(e) {
     e.preventDefault();
     const form = e.target;
-    const name = form.querySelector('[name="name"]').value;
-    const department = form.querySelector('[name="department"]').value;
-    const email = form.querySelector('[name="email"]').value;
-    const subject = form.querySelector('[name="subject"]').value;
-    const message = form.querySelector('[name="message"]').value;
+    const submitBtn = document.getElementById("contact-submit-btn") || form.querySelector('button[type="submit"]');
+    const statusBox = document.getElementById("contact-form-status");
+    const isTr = (window.getEmLang ? window.getEmLang() : "en") === "tr";
 
-    const mailtoBody = `Ad Soyad / Kurum: ${name}%0D%0ABölüm: ${department}%0D%0AE-posta: ${email}%0D%0A%0D%0AMesaj:%0D%0A${encodeURIComponent(message)}`;
-    window.location.href = `mailto:eternalmorph26@gmail.com?subject=${encodeURIComponent(subject)}&body=${mailtoBody}`;
+    const name = form.querySelector('[name="name"]').value.trim();
+    const department = form.querySelector('[name="department"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    const subject = form.querySelector('[name="subject"]').value.trim();
+    const message = form.querySelector('[name="message"]').value.trim();
+
+    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : "";
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = isTr
+            ? '<i class="fa-solid fa-spinner fa-spin"></i> Gönderiliyor...'
+            : '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    }
+    if (statusBox) {
+        statusBox.style.display = "none";
+        statusBox.className = "em-form-status";
+    }
+
+    try {
+        const res = await fetch("https://formsubmit.co/ajax/eternalmorph26@gmail.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                department,
+                email,
+                _replyto: email,
+                _subject: subject,
+                _template: "table",
+                message
+            })
+        });
+
+        const data = await res.json();
+        if (res.ok && (data.success === "true" || data.success === true)) {
+            if (statusBox) {
+                statusBox.className = "em-form-status success";
+                statusBox.innerHTML = isTr
+                    ? '<i class="fa-solid fa-circle-check"></i> Mesajınız başarıyla <strong>eternalmorph26@gmail.com</strong> adresine gönderildi!'
+                    : '<i class="fa-solid fa-circle-check"></i> Your message has been sent to <strong>eternalmorph26@gmail.com</strong>!';
+                statusBox.style.display = "block";
+            }
+            form.reset();
+        } else {
+            throw new Error(data.message || "Submission failed");
+        }
+    } catch (err) {
+        if (statusBox) {
+            statusBox.className = "em-form-status error";
+            statusBox.innerHTML = isTr
+                ? '<i class="fa-solid fa-triangle-exclamation"></i> Gönderim sırasında bir hata oluştu. Lütfen doğrudan <strong>eternalmorph26@gmail.com</strong> adresine yazın.'
+                : '<i class="fa-solid fa-triangle-exclamation"></i> Failed to send message. Please email <strong>eternalmorph26@gmail.com</strong> directly.';
+            statusBox.style.display = "block";
+        }
+    } finally {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+        }
+    }
 };

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim & Ekibe Katıl | Eternal-Morph</title>
-    <meta name="description" content="Eternal-Morph: Ekibimize katılım başvuruları, proje fikri önerileri ve sponsorluk iletişim portalı.">
-    <meta name="keywords" content="Eternal Morph iletişim, Eternal-Morph başvuru, ekibe katıl, mühendislik staj, sponsorluk, proje önerisi">
-    <meta name="author" content="Eternal-Morph Mühendislik Takımı">
+    <title data-i18n="meta.contact.title">Contact &amp; Join Us | Eternal-Morph</title>
+    <meta name="description" content="Eternal-Morph: Team membership applications, robotics project proposals, and sponsorship contact portal.">
+    <meta name="keywords" content="Eternal Morph contact, Eternal-Morph apply, join team, engineering internship, sponsorship, project proposal">
+    <meta name="author" content="Eternal-Morph Engineering Team">
     <meta name="robots" content="index, follow">
 
     <!-- Canonical URL -->
@@ -21,17 +21,17 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://eternalmorph.com.tr/contact/">
-    <meta property="og:title" content="İletişim & Ekibe Katıl | Eternal-Morph">
-    <meta property="og:description" content="Eternal-Morph: Ekibimize katılım başvuruları, proje fikri önerileri ve sponsorluk iletişim portalı.">
+    <meta property="og:title" content="Contact &amp; Join Us | Eternal-Morph">
+    <meta property="og:description" content="Eternal-Morph: Team applications, project proposals, and sponsorship contact portal.">
     <meta property="og:image" content="https://eternalmorph.com.tr/assets/logo.png">
     <meta property="og:site_name" content="Eternal-Morph">
-    <meta property="og:locale" content="tr_TR">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://eternalmorph.com.tr/contact/">
-    <meta name="twitter:title" content="İletişim & Ekibe Katıl | Eternal-Morph">
-    <meta name="twitter:description" content="Eternal-Morph başvuru, iletişim ve sponsorluk portalı.">
+    <meta name="twitter:title" content="Contact &amp; Join Us | Eternal-Morph">
+    <meta name="twitter:description" content="Eternal-Morph application, contact, and sponsorship portal.">
     <meta name="twitter:image" content="https://eternalmorph.com.tr/assets/logo.png">
 
     <!-- JSON-LD -->
@@ -39,9 +39,9 @@
     {
       "@context": "https://schema.org",
       "@type": "ContactPage",
-      "name": "İletişim & Ekibe Katıl",
+      "name": "Contact & Join Us",
       "url": "https://eternalmorph.com.tr/contact/",
-      "description": "Eternal-Morph başvuru, iletişim ve sponsorluk portalı.",
+      "description": "Eternal-Morph application, contact, and sponsorship portal.",
       "publisher": {
         "@type": "Organization",
         "name": "Eternal-Morph",
@@ -75,23 +75,27 @@
 
             <div class="em-status-badge">
                 <span class="em-pulse-dot"></span>
-                <span>1. AŞAMA: SİMÜLASYON & AR-GE</span>
+                <span data-i18n="nav.status">PHASE 1: SIMULATION &amp; R&amp;D</span>
             </div>
 
             <nav class="em-nav" id="nav-menu">
                 <ul class="em-nav-list">
-                    <li><a href="/" class="em-nav-link"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
-                    <li><a href="/information/" class="em-nav-link"><i class="fa-solid fa-circle-info"></i> Bilgi & Vizyon</a></li>
-                    <li><a href="/projects/" class="em-nav-link"><i class="fa-solid fa-diagram-project"></i> Projelerimiz</a></li>
-                    <li><a href="/contact/" class="em-nav-link active"><i class="fa-solid fa-paper-plane"></i> İletişim / Katıl</a></li>
+                    <li><a href="/" class="em-nav-link" data-i18n-html="nav.home"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="/information/" class="em-nav-link" data-i18n-html="nav.info"><i class="fa-solid fa-circle-info"></i> Info &amp; Vision</a></li>
+                    <li><a href="/projects/" class="em-nav-link" data-i18n-html="nav.projects"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
+                    <li><a href="/contact/" class="em-nav-link active" data-i18n-html="nav.contact"><i class="fa-solid fa-paper-plane"></i> Contact / Join</a></li>
                 </ul>
             </nav>
 
             <div class="em-header-actions">
-                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm">
-                    <i class="fa-brands fa-github"></i> GitHub Reposu
+                <div class="em-lang-switch" role="group" aria-label="Language Switcher">
+                    <button type="button" class="em-lang-btn active" data-lang="en">EN</button>
+                    <button type="button" class="em-lang-btn" data-lang="tr">TR</button>
+                </div>
+                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm" data-i18n-html="nav.github">
+                    <i class="fa-brands fa-github"></i> GitHub Repo
                 </a>
-                <button class="em-menu-toggle" id="menu-toggle" aria-label="Menüyü Aç/Kapat">
+                <button class="em-menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -102,13 +106,13 @@
     <section class="em-hero" style="padding-top:140px; padding-bottom:40px;">
         <div class="em-container">
             <div class="em-hero-tag">
-                <i class="fa-solid fa-envelope"></i> CONTACT & RECRUITMENT
+                <i class="fa-solid fa-envelope"></i> CONTACT &amp; RECRUITMENT
             </div>
-            <h1 class="em-hero-title">
-                İletişim & <span class="em-gradient-text">Ekibe Katılım</span>
+            <h1 class="em-hero-title" data-i18n-html="contact.hero.title">
+                Contact &amp; <span class="em-gradient-text">Join the Team</span>
             </h1>
-            <p class="em-hero-subtitle">
-                Projelerimize katılmak, yeni bir robotik fikir önermek veya iş birliği ve sponsorluk talebinde bulunmak için doğrudan bize ulaşın.
+            <p class="em-hero-subtitle" data-i18n="contact.hero.subtitle">
+                Reach out to us directly to join our projects, propose a new robotics idea, or discuss collaboration and sponsorship opportunities.
             </p>
         </div>
     </section>
@@ -120,42 +124,42 @@
                 
                 <!-- Direct Info Card -->
                 <div class="em-contact-card">
-                    <span class="em-section-subtitle"><i class="fa-solid fa-id-card"></i> İLETİŞİM KANALLARI</span>
-                    <h2 style="font-family:var(--em-font-display); font-size:1.6rem; color:#fff; margin-bottom:16px;">
-                        Bizimle İletişime Geçin
+                    <span class="em-section-subtitle" data-i18n-html="contact.info.sub"><i class="fa-solid fa-id-card"></i> CONTACT CHANNELS</span>
+                    <h2 style="font-family:var(--em-font-display); font-size:1.6rem; color:var(--em-primary); margin-bottom:16px;" data-i18n="contact.info.title">
+                        Get in Touch With Us
                     </h2>
-                    <p style="color:var(--em-text-secondary); margin-bottom:28px; line-height:1.7;">
-                        Eternal-Morph ekibi bağımsız bir mühendislik kolektifidir. Üniversite öğrencileri, araştırmacılar ve sanayi ortaklarıyla iş birliğine açığız.
+                    <p style="color:var(--em-text-secondary); margin-bottom:28px; line-height:1.7;" data-i18n="contact.info.desc">
+                        The Eternal-Morph team is an independent engineering collective. We are open to collaborating with university students, researchers, and industry partners.
                     </p>
 
                     <div style="display:flex; flex-direction:column; gap:20px;">
                         <div style="display:flex; align-items:center; gap:16px;">
-                            <div style="width:44px; height:44px; border-radius:8px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.2); display:flex; align-items:center; justify-content:center; color:var(--em-brand-cyan); font-size:1.1rem;">
+                            <div style="width:44px; height:44px; border-radius:8px; background:var(--em-accent-subtle); border:1px solid var(--em-accent-border); display:flex; align-items:center; justify-content:center; color:var(--em-accent); font-size:1.1rem;">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <span style="display:block; font-size:0.75rem; color:var(--em-text-muted); font-family:var(--em-font-mono);">DOĞRUDAN E-POSTA</span>
+                                <span style="display:block; font-size:0.75rem; color:var(--em-text-muted); font-family:var(--em-font-mono);" data-i18n="contact.info.emailLabel">DIRECT E-MAIL</span>
                                 <strong style="color:var(--em-text-primary); font-size:0.95rem;">eternalmorph26@gmail.com</strong>
                             </div>
                         </div>
 
                         <div style="display:flex; align-items:center; gap:16px;">
-                            <div style="width:44px; height:44px; border-radius:8px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.2); display:flex; align-items:center; justify-content:center; color:var(--em-brand-cyan); font-size:1.1rem;">
+                            <div style="width:44px; height:44px; border-radius:8px; background:var(--em-accent-subtle); border:1px solid var(--em-accent-border); display:flex; align-items:center; justify-content:center; color:var(--em-accent); font-size:1.1rem;">
                                 <i class="fa-brands fa-github"></i>
                             </div>
                             <div>
-                                <span style="display:block; font-size:0.75rem; color:var(--em-text-muted); font-family:var(--em-font-mono);">GITHUB ORGANİZASYONU</span>
-                                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" style="color:var(--em-brand-cyan); text-decoration:none; font-weight:600;">github.com/Eternal-Morph</a>
+                                <span style="display:block; font-size:0.75rem; color:var(--em-text-muted); font-family:var(--em-font-mono);" data-i18n="contact.info.githubLabel">GITHUB ORGANIZATION</span>
+                                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" style="color:var(--em-accent); text-decoration:none; font-weight:600;">github.com/Eternal-Morph</a>
                             </div>
                         </div>
 
                         <div style="display:flex; align-items:center; gap:16px;">
-                            <div style="width:44px; height:44px; border-radius:8px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.2); display:flex; align-items:center; justify-content:center; color:var(--em-brand-cyan); font-size:1.1rem;">
+                            <div style="width:44px; height:44px; border-radius:8px; background:var(--em-accent-subtle); border:1px solid var(--em-accent-border); display:flex; align-items:center; justify-content:center; color:var(--em-accent); font-size:1.1rem;">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
-                                <span style="display:block; font-size:0.75rem; color:var(--em-text-muted); font-family:var(--em-font-mono);">KONUM</span>
-                                <strong style="color:var(--em-text-primary); font-size:0.95rem;">Türkiye (Uzaktan / Hibrit Ar-Ge)</strong>
+                                <span style="display:block; font-size:0.75rem; color:var(--em-text-muted); font-family:var(--em-font-mono);" data-i18n="contact.info.locLabel">LOCATION</span>
+                                <strong style="color:var(--em-text-primary); font-size:0.95rem;" data-i18n="contact.info.locVal">Turkey (Remote / Hybrid R&amp;D)</strong>
                             </div>
                         </div>
                     </div>
@@ -163,34 +167,35 @@
 
                 <!-- Form Card -->
                 <div class="em-contact-card">
-                    <span class="em-section-subtitle"><i class="fa-solid fa-paper-plane"></i> MESAJ GÖNDERİN</span>
-                    <h2 style="font-family:var(--em-font-display); font-size:1.6rem; color:#fff; margin-bottom:16px;">
-                        Başvuru & İletişim Formu
+                    <span class="em-section-subtitle" data-i18n-html="contact.form.sub"><i class="fa-solid fa-paper-plane"></i> SEND A MESSAGE</span>
+                    <h2 style="font-family:var(--em-font-display); font-size:1.6rem; color:var(--em-primary); margin-bottom:16px;" data-i18n="contact.form.title">
+                        Application &amp; Contact Form
                     </h2>
-                    <form onsubmit="handleContactSubmit(event)">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)">
                         <div class="em-form-group">
-                            <label for="c-name">Adınız Soyadınız / Kurum</label>
-                            <input type="text" name="name" id="c-name" class="em-form-input" placeholder="Örn: Ahmet Yılmaz" required>
+                            <label for="c-name" data-i18n="contact.form.nameLabel">Full Name / Organization</label>
+                            <input type="text" name="name" id="c-name" class="em-form-input" placeholder="e.g., Alex Morgan" data-i18n-placeholder="contact.form.namePh" required>
                         </div>
                         <div class="em-form-group">
-                            <label for="c-department">Bölümünüz / Uzmanlık Alanınız</label>
-                            <input type="text" name="department" id="c-department" class="em-form-input" placeholder="Örn: Makine Mühendisliği (3. Sınıf)" required>
+                            <label for="c-department" data-i18n="contact.form.deptLabel">Department / Area of Expertise</label>
+                            <input type="text" name="department" id="c-department" class="em-form-input" placeholder="e.g., Mechanical Engineering (Junior)" data-i18n-placeholder="contact.form.deptPh" required>
                         </div>
                         <div class="em-form-group">
-                            <label for="c-email">E-posta Adresiniz</label>
-                            <input type="email" name="email" id="c-email" class="em-form-input" placeholder="ahmet@ornek.com" required>
+                            <label for="c-email" data-i18n="contact.form.emailLabel">E-mail Address</label>
+                            <input type="email" name="email" id="c-email" class="em-form-input" placeholder="alex@example.com" data-i18n-placeholder="contact.form.emailPh" required>
                         </div>
                         <div class="em-form-group">
-                            <label for="c-subject">Konu</label>
-                            <input type="text" name="subject" id="c-subject" class="em-form-input" value="Eternal-Morph Ekip Başvurusu / İletişim" required>
+                            <label for="c-subject" data-i18n="contact.form.subjectLabel">Subject</label>
+                            <input type="text" name="subject" id="c-subject" class="em-form-input" value="Eternal-Morph Team Application / Contact" data-i18n-value="contact.form.subjectVal" required>
                         </div>
                         <div class="em-form-group">
-                            <label for="c-message">Mesajınız / Başvuru Detayınız</label>
-                            <textarea name="message" id="c-message" class="em-form-input" rows="4" placeholder="Kendinizden, ilgi duyduğunuz disiplinden ve tecrübelerinizden bahsedin..." required></textarea>
+                            <label for="c-message" data-i18n="contact.form.msgLabel">Message / Application Details</label>
+                            <textarea name="message" id="c-message" class="em-form-input" rows="4" placeholder="Tell us about yourself, your discipline of interest, and your experience..." data-i18n-placeholder="contact.form.msgPh" required></textarea>
                         </div>
-                        <button type="submit" class="em-btn em-btn-primary em-btn-block">
-                            <i class="fa-solid fa-paper-plane"></i> Mesajı Gönder (eternalmorph26@gmail.com)
+                        <button type="submit" id="contact-submit-btn" class="em-btn em-btn-primary em-btn-block" data-i18n-html="contact.form.submit">
+                            <i class="fa-solid fa-paper-plane"></i> Send Message (eternalmorph26@gmail.com)
                         </button>
+                        <div id="contact-form-status" class="em-form-status" style="display:none;"></div>
                     </form>
                 </div>
 
@@ -206,23 +211,23 @@
                     <img src="../assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
                     <div>
                         <h4>ETERNAL-MORPH</h4>
-                        <p>Multidisipliner Mühendislik & Robotik Laboratuvarı</p>
+                        <p data-i18n="footer.subtitle">Multidisciplinary Engineering &amp; Robotics Lab</p>
                     </div>
                 </div>
                 <div class="em-footer-links">
-                    <a href="/">Ana Sayfa</a>
-                    <a href="/information/">Bilgi & Vizyon</a>
-                    <a href="/projects/">Projelerimiz</a>
-                    <a href="/contact/">İletişim</a>
+                    <a href="/" data-i18n="footer.home">Home</a>
+                    <a href="/information/" data-i18n="footer.info">Info &amp; Vision</a>
+                    <a href="/projects/" data-i18n="footer.projects">Projects</a>
+                    <a href="/contact/" data-i18n="footer.contact">Contact</a>
                     <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
             <div class="em-footer-copy">
-                <p>&copy; 2026 Eternal-Morph Multidisipliner Mühendislik Proje Ekibi. Tüm Hakları Saklıdır.</p>
+                <p data-i18n="footer.copy">&copy; 2026 Eternal-Morph Multidisciplinary Engineering Collective. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../script.js?v=i18n1"></script>
 </body>
 </html>

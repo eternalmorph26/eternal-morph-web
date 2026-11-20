@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ekip Hakkında & Mühendislik Vizyonu | Eternal-Morph</title>
-    <meta name="description" content="Eternal-Morph: Makine, Elektrik-Elektronik ve Yazılım Mühendisliği disiplinlerini birleştiren multidisipliner proje ekibinin vizyonu, HIL ve simülasyon metodolojisi.">
-    <meta name="keywords" content="Eternal Morph vizyon, Eternal-Morph ekip, multidisipliner mühendislik, HIL simülasyon, sanal ikiz, robotik vizyon">
-    <meta name="author" content="Eternal-Morph Mühendislik Takımı">
+    <title data-i18n="meta.info.title">About &amp; Engineering Vision | Eternal-Morph</title>
+    <meta name="description" content="Eternal-Morph: Vision, HIL, and simulation methodology of our multidisciplinary engineering collective uniting Mechanical, Electrical-Electronics, and Software Engineering.">
+    <meta name="keywords" content="Eternal Morph vision, Eternal-Morph team, multidisciplinary engineering, HIL simulation, digital twin, robotics vision">
+    <meta name="author" content="Eternal-Morph Engineering Team">
     <meta name="robots" content="index, follow">
 
     <!-- Canonical URL -->
@@ -21,17 +21,17 @@
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://eternalmorph.com.tr/information/">
-    <meta property="og:title" content="Ekip Hakkında & Mühendislik Vizyonu | Eternal-Morph">
-    <meta property="og:description" content="Eternal-Morph: Makine, Elektrik-Elektronik ve Yazılım Mühendisliği disiplinlerini birleştiren multidisipliner proje ekibinin vizyonu ve metodolojisi.">
+    <meta property="og:title" content="About &amp; Engineering Vision | Eternal-Morph">
+    <meta property="og:description" content="Eternal-Morph: Vision and methodology of our multidisciplinary engineering collective.">
     <meta property="og:image" content="https://eternalmorph.com.tr/assets/logo.png">
     <meta property="og:site_name" content="Eternal-Morph">
-    <meta property="og:locale" content="tr_TR">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://eternalmorph.com.tr/information/">
-    <meta name="twitter:title" content="Ekip Hakkında & Mühendislik Vizyonu | Eternal-Morph">
-    <meta name="twitter:description" content="Multidisipliner mühendislik ekibimizin vizyonu ve simülasyon metodolojimiz.">
+    <meta name="twitter:title" content="About &amp; Engineering Vision | Eternal-Morph">
+    <meta name="twitter:description" content="Our multidisciplinary engineering collective's vision and simulation methodology.">
     <meta name="twitter:image" content="https://eternalmorph.com.tr/assets/logo.png">
 
     <!-- JSON-LD -->
@@ -39,9 +39,9 @@
     {
       "@context": "https://schema.org",
       "@type": "AboutPage",
-      "name": "Ekip Hakkında & Mühendislik Vizyonu",
+      "name": "About & Engineering Vision",
       "url": "https://eternalmorph.com.tr/information/",
-      "description": "Eternal-Morph multidisipliner proje ekibinin vizyonu, HIL ve simülasyon metodolojisi.",
+      "description": "Vision, HIL, and simulation methodology of the Eternal-Morph multidisciplinary collective.",
       "publisher": {
         "@type": "Organization",
         "name": "Eternal-Morph",
@@ -75,23 +75,27 @@
 
             <div class="em-status-badge">
                 <span class="em-pulse-dot"></span>
-                <span>1. AŞAMA: SİMÜLASYON & AR-GE</span>
+                <span data-i18n="nav.status">PHASE 1: SIMULATION &amp; R&amp;D</span>
             </div>
 
             <nav class="em-nav" id="nav-menu">
                 <ul class="em-nav-list">
-                    <li><a href="/" class="em-nav-link"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
-                    <li><a href="/information/" class="em-nav-link active"><i class="fa-solid fa-circle-info"></i> Bilgi & Vizyon</a></li>
-                    <li><a href="/projects/" class="em-nav-link"><i class="fa-solid fa-diagram-project"></i> Projelerimiz</a></li>
-                    <li><a href="/contact/" class="em-nav-link"><i class="fa-solid fa-paper-plane"></i> İletişim / Katıl</a></li>
+                    <li><a href="/" class="em-nav-link" data-i18n-html="nav.home"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="/information/" class="em-nav-link active" data-i18n-html="nav.info"><i class="fa-solid fa-circle-info"></i> Info &amp; Vision</a></li>
+                    <li><a href="/projects/" class="em-nav-link" data-i18n-html="nav.projects"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
+                    <li><a href="/contact/" class="em-nav-link" data-i18n-html="nav.contact"><i class="fa-solid fa-paper-plane"></i> Contact / Join</a></li>
                 </ul>
             </nav>
 
             <div class="em-header-actions">
-                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm">
-                    <i class="fa-brands fa-github"></i> GitHub Reposu
+                <div class="em-lang-switch" role="group" aria-label="Language Switcher">
+                    <button type="button" class="em-lang-btn active" data-lang="en">EN</button>
+                    <button type="button" class="em-lang-btn" data-lang="tr">TR</button>
+                </div>
+                <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener" class="em-btn em-btn-outline em-btn-sm" data-i18n-html="nav.github">
+                    <i class="fa-brands fa-github"></i> GitHub Repo
                 </a>
-                <button class="em-menu-toggle" id="menu-toggle" aria-label="Menüyü Aç/Kapat">
+                <button class="em-menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -102,108 +106,196 @@
     <section class="em-hero" style="padding-top:140px; padding-bottom:40px;">
         <div class="em-container">
             <div class="em-hero-tag">
-                <i class="fa-solid fa-book-bookmark"></i> INFORMATION & ARCHITECTURE
+                <i class="fa-solid fa-book-bookmark"></i> INFORMATION &amp; ARCHITECTURE
             </div>
-            <h1 class="em-hero-title">
-                Ekip Hakkında & <span class="em-gradient-text">Mühendislik Vizyonu</span>
+            <h1 class="em-hero-title" data-i18n-html="info.hero.title">
+                About the Team &amp; <span class="em-gradient-text">Engineering Vision</span>
             </h1>
-            <p class="em-hero-subtitle">
-                Eternal-Morph; Makine, Elektrik-Elektronik ve Yazılım Mühendisliği alanındaki yetenekleri birleştirerek sanal ikiz (Digital Twin) ve simülasyon tabanlı ileri Ar-Ge sistemleri geliştiren bağımsız bir inovasyon kolektifidir.
+            <p class="em-hero-subtitle" data-i18n="info.hero.subtitle">
+                Eternal-Morph is an independent innovation collective uniting talent across Mechanical, Electrical-Electronics, and Software Engineering to build Digital Twin and simulation-driven advanced R&amp;D systems.
             </p>
         </div>
     </section>
 
-        <!-- Ekip Vizyonu & Mühendislik Metodolojisi -->
+    <!-- Team Vision & Engineering Methodology -->
     <section id="vizyon" class="em-section em-section-alt">
         <div class="em-container">
             <div class="em-section-header">
-                <span class="em-section-subtitle"><i class="fa-solid fa-microchip"></i> MÜHENDİSLİK METODOLOJİSİ & ÇALIŞMA KÜLTÜRÜ</span>
-                <h2 class="em-section-title">Uçtan Uca Entegre Mühendislik ve Sanal İkiz Yaklaşımı</h2>
-                <p class="em-section-desc">Mekanik, gömülü donanım ve otonom yazılım katmanlarını geleneksel izole silolardan çıkarıp; tam entegre bir Ar-Ge ve simülasyon döngüsünde birleştiriyoruz.</p>
+                <span class="em-section-subtitle" data-i18n-html="home.vision.sub"><i class="fa-solid fa-microchip"></i> ENGINEERING METHODOLOGY &amp; WORK CULTURE</span>
+                <h2 class="em-section-title" data-i18n="home.vision.title">End-to-End Integrated Engineering &amp; Digital Twin Approach</h2>
+                <p class="em-section-desc" data-i18n="home.vision.desc">We break mechanical, embedded hardware, and autonomous software layers out of traditional isolated silos, uniting them in a fully integrated R&amp;D and simulation loop.</p>
             </div>
 
             <div class="em-values-grid">
-                <!-- KART 1: Eşzamanlı Sistem Tasarımı -->
+                <!-- CARD 1 -->
                 <div class="em-value-card">
                     <div class="em-value-header">
                         <div class="em-value-icon"><i class="fa-solid fa-network-wired"></i></div>
-                        <span class="em-value-step">01 / EŞZAMANLI DÖNGÜ</span>
+                        <span class="em-value-step" data-i18n="home.vision.c1Step">01 / CONCURRENT LOOP</span>
                     </div>
-                    <h3>Disiplinlerarası Entegre Tasarım</h3>
-                    <p>Mekanik CAD modelleme, gömülü PCB tasarımı ve ROS2 yazılım mimarisi birbirinden bağımsız aşamalar olarak değil; ilk günden itibaren ortak arayüz standartları (URDF, CAN-Bus, ISO flanşları) üzerinden eşzamanlı geliştirilir.</p>
+                    <h3 data-i18n="home.vision.c1Title">Interdisciplinary Integrated Design</h3>
+                    <p data-i18n="home.vision.c1Desc">Mechanical CAD modeling, embedded PCB design, and ROS2 software architecture are not treated as disconnected stages; they are developed concurrently from day one over shared interface standards (URDF, CAN-Bus, ISO flanges).</p>
                     <div class="em-value-specs">
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Sıfır Entegrasyon Uyuşmazlığı</span>
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Eşzamanlı CAD-PCB-Firmware Tasarımı</span>
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Sistem Seviyesinde Ön Doğrulama</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c1P1"><i class="fa-solid fa-check"></i> Zero Integration Mismatch</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c1P2"><i class="fa-solid fa-check"></i> Concurrent CAD-PCB-Firmware Design</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c1P3"><i class="fa-solid fa-check"></i> System-Level Pre-Validation</span>
                     </div>
                 </div>
 
-                <!-- KART 2: Model Tabanlı Sanal İkiz -->
+                <!-- CARD 2 -->
                 <div class="em-value-card">
                     <div class="em-value-header">
                         <div class="em-value-icon em-icon-accent"><i class="fa-solid fa-cubes-stacked"></i></div>
-                        <span class="em-value-step">02 / MODEL-BASED SIM</span>
+                        <span class="em-value-step" data-i18n="home.vision.c2Step">02 / MODEL-BASED SIM</span>
                     </div>
-                    <h3>Model Tabanlı Sanal İkiz Doğrulaması</h3>
-                    <p>Fiziksel üretim maliyet ve risklerini minimize etmek adına; kütle tensörleri, aerodinamik sürüklenme katsayıları ve eklem torkları Gazebo & Isaac Sim ortamlarında yüksek hassasiyetli matematiksel fizik motorlarıyla doğrulanır.</p>
+                    <h3 data-i18n="home.vision.c2Title">Model-Based Digital Twin Verification</h3>
+                    <p data-i18n="home.vision.c2Desc">To minimize physical manufacturing costs and risks, inertia tensors, aerodynamic drag coefficients, and joint torques are verified in Gazebo &amp; Isaac Sim using high-precision mathematical physics engines.</p>
                     <div class="em-value-specs">
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Gazebo & Isaac Sim Dinamik Doğrulama</span>
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> ANSYS FEA/CFD Akış ve Gerilme Analizi</span>
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Parametrik URDF & Xacro Ağacı</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c2P1"><i class="fa-solid fa-check"></i> Gazebo &amp; Isaac Sim Dynamic Verification</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c2P2"><i class="fa-solid fa-check"></i> ANSYS FEA/CFD Flow &amp; Stress Analysis</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c2P3"><i class="fa-solid fa-check"></i> Parametric URDF &amp; Xacro Tree</span>
                     </div>
                 </div>
 
-                <!-- KART 3: HIL & Hızlı Prototipleme -->
+                <!-- CARD 3 -->
                 <div class="em-value-card">
                     <div class="em-value-header">
                         <div class="em-value-icon"><i class="fa-solid fa-bolt"></i></div>
-                        <span class="em-value-step">03 / RAPID HARDWARE</span>
+                        <span class="em-value-step" data-i18n="home.vision.c3Step">03 / RAPID HARDWARE</span>
                     </div>
-                    <h3>HIL Co-Simulation & Hızlı Prototipleme</h3>
-                    <p>Simülasyonda doğrulanan matematiksel modeller; STM32 gömülü kontrol kartları, CAN-Bus telemetri hatları ve CNC işlenmiş kompozit gövdelerle donanım-sanal ikiz döngüsünde (HIL) test edilerek sahaya hazırlanır.</p>
+                    <h3 data-i18n="home.vision.c3Title">HIL Co-Simulation &amp; Rapid Prototyping</h3>
+                    <p data-i18n="home.vision.c3Desc">Mathematical models validated in simulation are prepared for field deployment by testing STM32 embedded control boards, CAN-Bus telemetry lines, and CNC-machined composite airframes in a Hardware-in-the-Loop (HIL) cycle.</p>
                     <div class="em-value-specs">
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> STM32 & CAN-Bus Gerçek Zamanlı Test</span>
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> HIL (Hardware-in-the-Loop) Döngüsü</span>
-                        <span class="em-spec-pill"><i class="fa-solid fa-check"></i> Açık Kaynak CAD & ROS2 Paketleri</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c3P1"><i class="fa-solid fa-check"></i> STM32 &amp; CAN-Bus Real-Time Testing</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c3P2"><i class="fa-solid fa-check"></i> Hardware-in-the-Loop (HIL) Cycle</span>
+                        <span class="em-spec-pill" data-i18n-html="home.vision.c3P3"><i class="fa-solid fa-check"></i> Open-Source CAD &amp; ROS2 Packages</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3 Adımlı Geliştirme Metodolojisi -->
+    <!-- 3-Step Development Methodology -->
     <section class="em-section">
         <div class="em-container">
             <div class="em-section-header">
-                <span class="em-section-subtitle"><i class="fa-solid fa-diagram-next"></i> GELİŞTİRME PİPELİNE</span>
-                <h2 class="em-section-title">3 Aşamalı Prototipleme Süreci</h2>
-                <p class="em-section-desc">Sanal ortamdan fiziksel üretime uzanan doğrulanabilir mühendislik yol haritamız.</p>
+                <span class="em-section-subtitle" data-i18n-html="info.pipe.sub"><i class="fa-solid fa-diagram-next"></i> DEVELOPMENT PIPELINE</span>
+                <h2 class="em-section-title" data-i18n="info.pipe.title">3-Stage Prototyping Process</h2>
+                <p class="em-section-desc" data-i18n="info.pipe.desc">Our verifiable engineering roadmap from virtual simulation to physical manufacturing.</p>
             </div>
 
             <div class="em-hil-pipeline">
                 <div class="em-pipeline-step active-step">
                     <div class="em-step-number">01</div>
                     <div class="em-step-icon em-icon-cyan"><i class="fa-solid fa-cube"></i></div>
-                    <h3>Sanal İkiz & Simülasyon (Aktif)</h3>
-                    <p>SolidWorks / Fusion 360 CAD modelleri URDF/Xacro formatına aktarılarak Gazebo veya Isaac Sim ortamında kütle, aerodinamik ve eklem fiziği detaylıca benzetimden geçirilir.</p>
-                    <span class="em-step-tag em-tag-active">Şu Anki Aktif Aşama</span>
+                    <h3 data-i18n="info.pipe.s1Title">Digital Twin &amp; Simulation (Active)</h3>
+                    <p data-i18n="info.pipe.s1Desc">SolidWorks / Fusion 360 CAD models are exported to URDF/Xacro format and thoroughly simulated in Gazebo or Isaac Sim for mass, aerodynamics, and joint physics.</p>
+                    <span class="em-step-tag em-tag-active" data-i18n="info.pipe.s1Tag">Current Active Stage</span>
                 </div>
 
                 <div class="em-pipeline-step">
                     <div class="em-step-number">02</div>
                     <div class="em-step-icon"><i class="fa-solid fa-microchip"></i></div>
-                    <h3>HIL Co-Simulation (Hedeflenen)</h3>
-                    <p>Tasarladığımız STM32 kontrol kartları, CAN-Bus/UART veri hattı üzerinden simülasyon sunucusuna bağlanır. Gerçek zamanlı donanım ile sanal ikiz aynı anda haberleşir.</p>
-                    <span class="em-step-tag">Gelecek 2. Aşama</span>
+                    <h3 data-i18n="info.pipe.s2Title">HIL Co-Simulation (Targeted)</h3>
+                    <p data-i18n="info.pipe.s2Desc">Our custom STM32 control boards connect to the simulation server via CAN-Bus/UART, enabling real-time hardware and digital twin co-execution.</p>
+                    <span class="em-step-tag" data-i18n="info.pipe.s2Tag">Upcoming Phase 2</span>
                 </div>
 
                 <div class="em-pipeline-step">
                     <div class="em-step-number">03</div>
                     <div class="em-step-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                    <h3>Fiziksel Prototipleme & Test</h3>
-                    <p>Simülasyonda doğrulanan tasarımların CNC işleme, 3D baskı, Karbon Fiber serim ve özel PCB imalatı tamamlanarak sahada fiziksel testleri gerçekleştirilir.</p>
-                    <span class="em-step-tag">Nihai Saha Evresi</span>
+                    <h3 data-i18n="info.pipe.s3Title">Physical Prototyping &amp; Field Tests</h3>
+                    <p data-i18n="info.pipe.s3Desc">Simulation-verified designs move into CNC machining, 3D printing, carbon-fiber layup, and custom PCB fabrication for real-world field testing.</p>
+                    <span class="em-step-tag" data-i18n="info.pipe.s3Tag">Final Field Stage</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive System Architecture Explorer -->
+    <section id="mimari" class="em-section em-section-alt">
+        <div class="em-container">
+            <div class="em-section-header">
+                <span class="em-section-subtitle" data-i18n-html="home.arch.sub"><i class="fa-solid fa-sitemap"></i> INTERDISCIPLINARY INTEGRATION</span>
+                <h2 class="em-section-title" data-i18n="home.arch.title">Our Project System Architecture</h2>
+                <p class="em-section-desc" data-i18n="home.arch.desc">Explore how our mechanical, hardware, and software layers bring a project to life step by step.</p>
+            </div>
+
+            <div class="em-architecture-explorer">
+                <div class="em-arch-tabs">
+                    <button class="em-arch-tab active" data-arch="mech" data-i18n-html="home.arch.tabMech">
+                        <i class="fa-solid fa-compass-drafting"></i> 1. Mechanical &amp; CAD Layer
+                    </button>
+                    <button class="em-arch-tab" data-arch="elec" data-i18n-html="home.arch.tabElec">
+                        <i class="fa-solid fa-microchip"></i> 2. Hardware &amp; Electronics Layer
+                    </button>
+                    <button class="em-arch-tab" data-arch="soft" data-i18n-html="home.arch.tabSoft">
+                        <i class="fa-solid fa-code"></i> 3. Software &amp; Autonomy Layer
+                    </button>
+                </div>
+
+                <div class="em-arch-content-box" id="arch-display-content">
+                    <div class="em-arch-info">
+                        <div class="em-arch-badge"><i class="fa-solid fa-compass-drafting"></i> Layer 1: Mechanical &amp; Aerodynamic Architecture</div>
+                        <h3>SolidWorks &amp; Fusion 360 Parametric CAD and CFD</h3>
+                        <p>The physical chassis, centers of mass, and joint kinematics of our projects are parametrically modeled in CAD. After completing aerodynamic flow and structural stress analyses in ANSYS, models are exported to the simulation layer in URDF/Xacro format.</p>
+                        <div class="em-arch-highlights-list">
+                            <span><i class="fa-solid fa-check"></i> Parametric CAD Chassis &amp; Assembly</span>
+                            <span><i class="fa-solid fa-check"></i> Aerodynamic CFD &amp; Flow Analysis</span>
+                            <span><i class="fa-solid fa-check"></i> URDF Mass &amp; Inertia Matrices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Comparison Matrix -->
+    <section class="em-section">
+        <div class="em-container">
+            <div class="em-section-header">
+                <span class="em-section-subtitle" data-i18n-html="home.matrix.sub"><i class="fa-solid fa-table-cells"></i> TECHNICAL SPECIFICATIONS</span>
+                <h2 class="em-section-title" data-i18n="home.matrix.title">Platform Parameter Matrix</h2>
+                <p class="em-section-desc" data-i18n="home.matrix.desc">Phase 1 simulation specifications and hardware architecture of our active platforms.</p>
+            </div>
+
+            <div class="em-matrix-wrapper">
+                <table class="em-matrix-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="home.matrix.colParam">ENGINEERING PARAMETER</th>
+                            <th data-i18n="home.matrix.colMorpho">MORPHOROBOT HYBRID DRONE</th>
+                            <th data-i18n="home.matrix.colHand">UR10 INTEGRATED BIONIC HAND</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n-html="home.matrix.r1Label"><i class="fa-solid fa-cube t-cyan"></i> CAD &amp; Modeling Stack</td>
+                            <td>SolidWorks / Fusion 360</td>
+                            <td>SolidWorks / Fusion 360</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n-html="home.matrix.r2Label"><i class="fa-solid fa-sliders t-cyan"></i> Phase 1 Simulation Engine</td>
+                            <td>ROS 2 Humble &amp; Gazebo Physics</td>
+                            <td>ROS 2 &amp; MoveIt 2 Kinematics</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n-html="home.matrix.r3Label"><i class="fa-solid fa-network-wired t-cyan"></i> Communication Protocol</td>
+                            <td data-i18n="home.matrix.r3Morpho">CAN-Bus 2.0B / UART Telemetry</td>
+                            <td data-i18n="home.matrix.r3Hand">URScript / ISO 9409-1 Standard Flange</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n-html="home.matrix.r4Label"><i class="fa-solid fa-microchip t-cyan"></i> Embedded Processor Architecture</td>
+                            <td>STM32H7 Dual-Core ARM Cortex-M7</td>
+                            <td>STM32F4 Real-time Motor Driver</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n-html="home.matrix.r5Label"><i class="fa-solid fa-shield-halved t-cyan"></i> Development Status</td>
+                            <td><span class="em-step-tag em-tag-active" data-i18n="home.matrix.r5Morpho">Phase 1 Simulation (GitHub)</span></td>
+                            <td><span class="em-step-tag em-tag-active" data-i18n="home.matrix.r5Hand">Phase 1 Kinematics (GitHub)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -216,23 +308,23 @@
                     <img src="../assets/logo.png" alt="Eternal Morph Logo" class="em-footer-logo">
                     <div>
                         <h4>ETERNAL-MORPH</h4>
-                        <p>Multidisipliner Mühendislik & Robotik Laboratuvarı</p>
+                        <p data-i18n="footer.subtitle">Multidisciplinary Engineering &amp; Robotics Lab</p>
                     </div>
                 </div>
                 <div class="em-footer-links">
-                    <a href="/">Ana Sayfa</a>
-                    <a href="/information/">Bilgi & Vizyon</a>
-                    <a href="/projects/">Projelerimiz</a>
-                    <a href="/contact/">İletişim</a>
+                    <a href="/" data-i18n="footer.home">Home</a>
+                    <a href="/information/" data-i18n="footer.info">Info &amp; Vision</a>
+                    <a href="/projects/" data-i18n="footer.projects">Projects</a>
+                    <a href="/contact/" data-i18n="footer.contact">Contact</a>
                     <a href="https://github.com/Eternal-Morph" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
             <div class="em-footer-copy">
-                <p>&copy; 2026 Eternal-Morph Multidisipliner Mühendislik Proje Ekibi. Tüm Hakları Saklıdır.</p>
+                <p data-i18n="footer.copy">&copy; 2026 Eternal-Morph Multidisciplinary Engineering Collective. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../script.js?v=i18n1"></script>
 </body>
 </html>
